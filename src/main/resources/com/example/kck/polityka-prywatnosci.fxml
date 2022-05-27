@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" styleClass="bodybg" stylesheets="@CSS/tlo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kck.HelloController">
+   <content>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: black;">
+         <children>
+            <Pane layoutY="33.0" opacity="0.85" prefHeight="93.0" prefWidth="1360.0" style="-fx-background-color: black;">
+               <children>
+                  <Label layoutX="14.0" layoutY="-23.0" text="WHISKY MADNESS" textFill="WHITE">
+                     <font>
+                        <Font name="Haettenschweiler" size="64.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="IdWhisky" layoutX="862.0" layoutY="-1.0" mnemonicParsing="false" onAction="#IdWhiskyOnActionEvent" style="-fx-background-color: black;" text="Kup whiskey" textFill="#cda252">
+                     <font>
+                        <Font name="Cooper Black" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="IdBeczka" layoutX="716.0" layoutY="-1.0" mnemonicParsing="false" onAction="#IdBeczkaOnActionEvent" style="-fx-background-color: black;" text="Kup beczke" textFill="#cda252">
+                     <font>
+                        <Font name="Cooper Black" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="IdProdukt" layoutX="525.0" layoutY="-3.0" mnemonicParsing="false" onAction="#IdProduktOnActionEvent" style="-fx-background-color: black;" text="Nasze produkty" textFill="#cda252">
+                     <font>
+                        <Font name="Cooper Black" size="20.0" />
+                     </font>
+                  </Button>
+                  <MenuButton layoutX="1135.0" layoutY="-19.0" mnemonicParsing="false" style="-fx-background-color: black;-fx-base: black;" text="MÓJ PROFIL" textFill="WHITE">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#IdProduktOnActionEvent" style="-fx-background-color: #7a7a7a; -fx-text-color: white;" text="Nasze produkty" />
+                        <MenuItem mnemonicParsing="false" onAction="#IdBeczkaOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Kup beczke" />
+                        <MenuItem mnemonicParsing="false" onAction="#IdWhiskyOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Kup whiskey" />
+                        <MenuItem mnemonicParsing="false" onAction="#wiadomosciOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Wiadomosci" />
+                        <MenuItem mnemonicParsing="false" onAction="#kontaktOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Kontakt" />
+                        <MenuItem mnemonicParsing="false" onAction="#politykaOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Polityka" />
+                        <MenuItem mnemonicParsing="false" onAction="#wylogujOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Wyloguj się" />
+                     </items>
+                     <font>
+                        <Font name="Cooper Black" size="20.0" />
+                     </font>
+                  </MenuButton>
+                  <Button fx:id="buttonKoszyk" layoutX="1059.0" layoutY="-20.0" mnemonicParsing="false" onAction="#koszykOnAction" prefHeight="41.0" prefWidth="63.0" style="-fx-background-color: black;">
+                     <graphic>
+                        <ImageView fitHeight="57.0" fitWidth="65.0" layoutX="1068.0" layoutY="-100.0">
+                           <Image url="@images/koszyk1.PNG" />
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </Pane>
+            <TextArea editable="false" layoutX="89.0" layoutY="126.0" prefHeight="601.0" prefWidth="1183.0" style="-fx-wrap-text: true;" text="Przedsiębiorca na prawach konsumenta:&#10;&#10;Od 1 stycznia 2021 r. weszła w życie nowelizacja przepisów, która rozszerzyła zakres uprawnień konsumenckich również na niektórych przedsiębiorców. Wobec tego, ochroną konsumencką dotyczącą:&#10;&#10;zwrotu towaru zakupionego na odległość, w ciągu 14 dni, bez podania przyczyny;&#10;klauzul niedozwolonych;&#10;szerszego zakresu uprawnień w ramach rękojmi;&#10;objęto:&#10;&#10;dotychczasowych konsumentów, rozumianych, jako osoby fizyczne, dokonujące z przedsiębiorcą czynności prawnej np. zakupu pralki, drukarki, artykułów spożywczych, zakupu usług itd. (dalej nazywany jako: „konsument sensu stricto&quot;);&#10;osoby fizyczne, zawierające umowę bezpośrednio związaną z ich działalnością gospodarczą, jeśli zawierana czynność (np. umowa sprzedaży) nie ma dla tych przedsiębiorców charakteru zawodowego (dalej: „przedsiębiorca na prawach konsumenta&quot;). Interpretacji, czy w danym przypadku przedsiębiorca jest objęty ochroną konsumencką, czy nie, dokonuje się w oparciu o przedmiot działalności gospodarczej przedsiębiorcy, ujawniony w rejestrze CEiDG.&#10;Celem nowelizacji ma być przeciwdziałanie dysproporcji praw przedsiębiorców - osób fizycznych, którzy zawierają umowę z innym przedsiębiorcą, nie związaną bezpośrednio z branżą lub specjalizacją tych przedsiębiorców - osób fizycznych. Wobec tego, w ramach umów, które nie są bezpośrednio związane z ich branżą lub specjalizacją, nie są już oni traktowani jak „profesjonaliści&quot;, od których wymaga się większej wiedzy np. robotnik budowlany, kupujący w ramach działalności gospodarczej materiały do budowy będzie nadal uznawany za podmiot profesjonalny (nie za konsumenta). Jeżeli jednak ten sam robotnik budowlany dokona zakupu towaru, zakwalifikowanego jako niezawodowy np. ekspres do kawy do biura, będzie on wówczas traktowany jak podmiot nieprofesjonalny (konsument).&#10;&#10;Jednakże, jak zgodnie zauważa się w doktrynie prawa (m.in. Komentarz do ustawy o prawach konsumenta pod red. Osajda 2020, wyd. 3/P. Mikłaszewicz), osoba, prowadząca działalność gospodarczą lub zawodową, która zawarła umowę przed 1 stycznia 2021 r., na gruncie art. 22[1] KC oraz zgodnie z przepisami prawa UE i orzecznictwem TSUE, była już uznawana za konsumenta, jeśli działała poza ramami swojej działalności profesjonalnej, w celach niezwiązanych z prowadzoną działalnością gospodarczą lub zawodową.&#10;&#10;&#10;Jak korzystać z dokumentu?&#10;&#10;Polityka prywatności spełnia obowiązki informacyjne, jakie ciążą na administratorze danych osobowych, którym jest zwykle właściciel strony internetowej. Precyzuje ona:&#10;&#10;kto jest administratorem danych oraz jak można się z nim skontaktować;&#10;kto jest inspektorem ochrony danych osobowych (jeśli firma go wyznaczyła);&#10;w jakich celach gromadzi się dane osobowe;&#10;które dane osobowe są gromadzone;&#10;okres przechowywania danych osobowych dla określonego celu przetwarzania;&#10;prawa użytkowników, związane z gromadzeniem ich danych (możliwość cofnięcia zgody na przetwarzanie, prośby o usunięcie danych z bazy administratora, możliwość sprostowania i zmiany danych, ograniczenia ich przetwarzania oraz wniesienia sprzeciwu);&#10;używanie przez stronę internetową plików cookies.&#10;Dokument należy wypełnić, odpowiadając na wszystkie pytania i umieścić na stronie internetowej, której ten dokument dotyczy.&#10;&#10;Polityka prywatności powinna być cały czas dostępna do wglądu, dla użytkowników strony internetowej. W szczególności, użytkownicy powinni móc się zapoznać z jej postanowieniami, przed udostępnieniem jakichkolwiek danych osobowych na stronie internetowej.&#10;&#10;Powszechną praktyką stała się konieczność akceptacji Polityki prywatności przez każdą osobę, która odwiedza stronę internetową, nawet zanim zacznie udostępniać swoje dane osobowe. Jest to realizowane już w chwili, kiedy osoba pojawi się na danej stronie internetowej. Taka praktyka jest całkowicie zasada. Jej uzasadnieniem jest fakt, że Polityka prywatności bardzo często zawiera również informacje o używaniu plików cookies, o czym użytkownik powinien być informowany już w momencie wejścia na daną stronę internetową (ma wówczas możliwość wyłączenia używania plików cookies w ramach swojej przeglądarki).&#10;&#10;&#10;Podstawa prawna:&#10;&#10;Obowiązek zawierania na stronie internetowej informacji o przetwarzaniu danych osobowych wynika z rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych), OJ L 119, 4.5.2016, p. 1–88, tzw. „RODO&quot;." />
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

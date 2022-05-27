@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" styleClass="bodybg" stylesheets="@CSS/tlo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kck.Weryfikacja">
+   <content>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="1360.0" styleClass="bodybg" stylesheets="@CSS/tlo.css">
+         <children>
+            <Pane layoutY="33.0" opacity="0.85" prefHeight="93.0" prefWidth="1360.0" style="-fx-background-color: black;">
+               <children>
+                  <Label layoutX="14.0" layoutY="-23.0" text="WHISKY MADNESS" textFill="WHITE">
+                     <font>
+                        <Font name="Haettenschweiler" size="64.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label layoutX="157.0" layoutY="173.0" text="WITAJ NA STRONIE WHISKY MADNESS" textFill="WHITE">
+               <font>
+                  <Font name="Cooper Black" size="50.0" />
+               </font>
+            </Label>
+            <Label layoutX="65.0" layoutY="253.0" text="JESLI CHCESZ SKORZYSTAC Z NASZYCH USLUG MUSISZ MIEC UKONCZONE 18 LAT" textFill="WHITE">
+               <font>
+                  <Font name="Cooper Black" size="28.0" />
+               </font>
+            </Label>
+            <Label layoutX="420.0" layoutY="319.0" text="PODAJ SWOJA DATE URODZENIA :" textFill="WHITE">
+               <font>
+                  <Font name="Cooper Black" size="28.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="idData" layoutX="557.0" layoutY="384.0" prefHeight="42.0" prefWidth="247.0" />
+            <Button fx:id="idWejdz" layoutX="428.0" layoutY="472.0" onAction="#weryfikacjaWieku" mnemonicParsing="false" style="-fx-background-color: BLACK;" text="PRZEJDZ NA STRONE " textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="43.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

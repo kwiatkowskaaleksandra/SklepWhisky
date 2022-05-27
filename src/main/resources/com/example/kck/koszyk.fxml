@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" styleClass="bodybg" stylesheets="@CSS/tlo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kck.koszyk">
+   <content>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: black;">
+         <children>
+            <Pane layoutY="33.0" opacity="0.85" prefHeight="93.0" prefWidth="1360.0" style="-fx-background-color: black;">
+               <children>
+                  <Label layoutX="14.0" layoutY="-23.0" text="WHISKY MADNESS" textFill="WHITE">
+                     <font>
+                        <Font name="Haettenschweiler" size="64.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="IdWhisky" layoutX="862.0" layoutY="-1.0" mnemonicParsing="false" onAction="#IdWhiskyOnActionEvent" style="-fx-background-color: black;" text="Kup whiskey" textFill="#cda252">
+                     <font>
+                        <Font name="Cooper Black" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="IdBeczka" layoutX="716.0" layoutY="-1.0" mnemonicParsing="false" onAction="#IdBeczkaOnActionEvent" style="-fx-background-color: black;" text="Kup beczke" textFill="#cda252">
+                     <font>
+                        <Font name="Cooper Black" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="IdProdukt" layoutX="525.0" layoutY="-3.0" mnemonicParsing="false" onAction="#IdProduktOnActionEvent" style="-fx-background-color: black;" text="Nasze produkty" textFill="#cda252">
+                     <font>
+                        <Font name="Cooper Black" size="20.0" />
+                     </font>
+                  </Button>
+                  <MenuButton layoutX="1135.0" layoutY="-19.0" mnemonicParsing="false" style="-fx-background-color: black;-fx-base: black;" text="MÓJ PROFIL" textFill="WHITE">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#IdProduktOnActionEvent" style="-fx-background-color: #7a7a7a; -fx-text-color: white;" text="Nasze produkty" />
+                        <MenuItem mnemonicParsing="false" onAction="#IdBeczkaOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Kup beczke" />
+                        <MenuItem mnemonicParsing="false" onAction="#IdWhiskyOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Kup whiskey" />
+                        <MenuItem mnemonicParsing="false" onAction="#wiadomosciOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Wiadomosci" />
+                        <MenuItem mnemonicParsing="false" onAction="#kontaktOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Kontakt" />
+                        <MenuItem mnemonicParsing="false" onAction="#politykaOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Polityka" />
+                        <MenuItem mnemonicParsing="false" onAction="#wylogujOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Wyloguj się" />
+                     </items>
+                     <font>
+                        <Font name="Cooper Black" size="20.0" />
+                     </font>
+                  </MenuButton>
+                  <Button fx:id="buttonKoszyk" layoutX="1059.0" layoutY="-20.0" mnemonicParsing="false" onAction="#koszykOnAction" prefHeight="41.0" prefWidth="63.0" style="-fx-background-color: black;">
+                     <graphic>
+                        <ImageView fitHeight="57.0" fitWidth="65.0" layoutX="1068.0" layoutY="-100.0">
+                           <Image url="@images/koszyk1.PNG" />
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane layoutX="31.0" layoutY="159.0" prefHeight="577.0" prefWidth="922.0" style="-fx-background-color: white;">
+               <children>
+                  <TableView fx:id="Tab" layoutX="14.0" layoutY="17.0" prefHeight="277.0" prefWidth="245.0">
+                    <columns>
+                      <TableColumn fx:id="idNazwa" prefWidth="91.0" text="Nazwa" />
+                      <TableColumn fx:id="idIlosc" prefWidth="86.0" text="Ilosc" />
+                        <TableColumn fx:id="idCena" prefWidth="65.0" text="Cena" />
+                        <TableColumn fx:id="idKosz" prefWidth="75.0" text="id" visible="false" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="idCenSztk" editable="false" layoutX="519.0" layoutY="156.0" prefHeight="25.0" prefWidth="230.0" />
+                  <TextField fx:id="idCenaK" editable="false" layoutX="260.0" layoutY="264.0" prefHeight="25.0" prefWidth="230.0" />
+                  <Label layoutX="260.0" layoutY="141.0" text="ILOSC">
+                     <font>
+                        <Font name="Cooper Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="519.0" layoutY="141.0" text="CENA">
+                     <font>
+                        <Font name="Cooper Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="buttonPlac" layoutX="582.0" layoutY="329.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="167.0" style="-fx-background-color: black; -fx-background-radius: 30;" text="DOKONCZ PŁATNOSC" textFill="#cda252">
+                     <font>
+                        <Font name="Cooper Black" size="12.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="260.0" layoutY="250.0" text="CENA KONCOWA">
+                     <font>
+                        <Font name="Cooper Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="712.0" layoutY="14.0" text="KOSZYK">
+                     <font>
+                        <Font name="System Bold" size="47.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="14.0" layoutY="329.0" prefHeight="44.0" prefWidth="201.0" promptText="KOD RABATOWY" style="-fx-background-color: lightgrey;" />
+                  <Button fx:id="buttonUsun" layoutX="582.0" layoutY="228.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="167.0" style="-fx-background-color: black; -fx-background-radius: 30;" text="USUN PRODUKTY" textFill="#cda252">
+                     <font>
+                        <Font name="Cooper Black" size="12.0" />
+                     </font>
+                  </Button>
+                  <Spinner fx:id="idIleSztk" layoutX="260.0" layoutY="156.0" prefHeight="20.0" prefWidth="236.0" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>
