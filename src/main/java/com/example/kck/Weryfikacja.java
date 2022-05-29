@@ -12,7 +12,6 @@ import javafx.stage.StageStyle;
 
 import javax.swing.*;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 
 public class Weryfikacja {
@@ -29,8 +28,8 @@ public class Weryfikacja {
         int localDatee = LocalDate.now().getYear();
         int datee = idData.getValue().getYear();
 
-        int yearr = localDatee-datee;
-        if(yearr >= 18){
+        int yearr = localDatee - datee;
+        if (yearr >= 18) {
 
             try {
                 Parent root;
@@ -45,19 +44,8 @@ public class Weryfikacja {
                 e.printStackTrace();
                 e.getCause();
             }
-        }else
-        {
+        } else {
             JOptionPane.showMessageDialog(null, "Nie jestes pelnoletni. Strona przeznaczona tylko dla osob powyzej 18 roku zycia.");
-        }
-    }
-
-    public void Sprawdz(){
-        int localDate = LocalDate.now().getYear();
-        int date = idData.getValue().getYear();
-
-        int year = localDate-date;
-        if(year >= 18){
-
         }
     }
 

@@ -1,83 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<ScrollPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity"
+            prefHeight="768.0" prefWidth="1360.0" styleClass="bodybg" stylesheets="@CSS/tlo.css"
+            xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.example.kck.BeczkaKontroler">
+    <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="1360.0"
+                    style="-fx-background-color: black;">
+            <children>
+                <Pane layoutY="33.0" opacity="0.85" prefHeight="93.0" prefWidth="1360.0"
+                      style="-fx-background-color: black;">
+                    <children>
+                        <Label layoutX="14.0" layoutY="-23.0" text="WHISKY MADNESS" textFill="WHITE">
+                            <font>
+                                <Font name="Haettenschweiler" size="64.0"/>
+                            </font>
+                        </Label>
+                        <Button fx:id="IdWhisky" layoutX="862.0" layoutY="-1.0" mnemonicParsing="false"
+                                onAction="#IdWhiskyOnActionEvent" style="-fx-background-color: black;"
+                                text="Kup whiskey" textFill="#cda252">
+                            <font>
+                                <Font name="Cooper Black" size="20.0"/>
+                            </font>
+                        </Button>
+                        <Button fx:id="IdBeczka" layoutX="716.0" layoutY="-1.0" mnemonicParsing="false"
+                                onAction="#IdBeczkaOnActionEvent" style="-fx-background-color: black;" text="Kup beczke"
+                                textFill="#cda252">
+                            <font>
+                                <Font name="Cooper Black" size="20.0"/>
+                            </font>
+                        </Button>
+                        <Button fx:id="IdProdukt" layoutX="525.0" layoutY="-3.0" mnemonicParsing="false"
+                                onAction="#IdProduktOnActionEvent" style="-fx-background-color: black;"
+                                text="Nasze produkty" textFill="#cda252">
+                            <font>
+                                <Font name="Cooper Black" size="20.0"/>
+                            </font>
+                        </Button>
+                        <MenuButton layoutX="1135.0" layoutY="-19.0" mnemonicParsing="false"
+                                    style="-fx-background-color: black;-fx-base: black;" text="MÓJ PROFIL"
+                                    textFill="WHITE">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#IdProduktOnActionEvent"
+                                          style="-fx-background-color: #7a7a7a; -fx-text-color: white;"
+                                          text="Nasze produkty"/>
+                                <MenuItem mnemonicParsing="false" onAction="#IdBeczkaOnActionEvent"
+                                          style="-fx-background-color: #7a7a7a;" text="Kup beczke"/>
+                                <MenuItem mnemonicParsing="false" onAction="#IdWhiskyOnActionEvent"
+                                          style="-fx-background-color: #7a7a7a;" text="Kup whiskey"/>
+                                <MenuItem mnemonicParsing="false" onAction="#wiadomosciOnActionEvent"
+                                          style="-fx-background-color: #7a7a7a;" text="Wiadomosci"/>
+                                <MenuItem mnemonicParsing="false" onAction="#mojProfilOnActionEvent"
+                                          style="-fx-background-color: #7a7a7a;" text="Moj profil"/>
+                                <MenuItem mnemonicParsing="false" onAction="#kontaktOnActionEvent"
+                                          style="-fx-background-color: #7a7a7a;" text="Kontakt"/>
+                                <MenuItem mnemonicParsing="false" onAction="#politykaOnActionEvent"
+                                          style="-fx-background-color: #7a7a7a;" text="Polityka"/>
+                                <MenuItem mnemonicParsing="false" onAction="#wylogujOnActionEvent"
+                                          style="-fx-background-color: #7a7a7a;" text="Wyloguj się"/>
+                            </items>
+                            <font>
+                                <Font name="Cooper Black" size="20.0"/>
+                            </font>
+                        </MenuButton>
+                        <Button fx:id="buttonKoszyk" layoutX="1059.0" layoutY="-20.0" mnemonicParsing="false"
+                                onAction="#koszykOnAction" prefHeight="41.0" prefWidth="63.0"
+                                style="-fx-background-color: black;">
+                            <graphic>
+                                <ImageView fitHeight="57.0" fitWidth="65.0" layoutX="1068.0" layoutY="-100.0">
+                                    <Image url="@images/koszyk1.PNG"/>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                </Pane>
+                <Pane layoutX="36.0" layoutY="118.0" prefHeight="604.0" prefWidth="1250.0"
+                      style="-fx-background-color: white;">
+                    <children>
+                        <Pane layoutX="8.0" layoutY="7.0">
+                            <children>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" styleClass="bodybg" stylesheets="@CSS/tlo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kck.BeczkaKontroler">
-   <content>
-      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: black;">
-         <children>
-            <Pane layoutY="33.0" opacity="0.85" prefHeight="93.0" prefWidth="1360.0" style="-fx-background-color: black;">
-               <children>
-                  <Label layoutX="14.0" layoutY="-23.0" text="WHISKY MADNESS" textFill="WHITE">
-                     <font>
-                        <Font name="Haettenschweiler" size="64.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="IdWhisky" layoutX="862.0" layoutY="-1.0" mnemonicParsing="false" onAction="#IdWhiskyOnActionEvent" style="-fx-background-color: black;" text="Kup whiskey" textFill="#cda252">
-                     <font>
-                        <Font name="Cooper Black" size="20.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="IdBeczka" layoutX="716.0" layoutY="-1.0" mnemonicParsing="false" onAction="#IdBeczkaOnActionEvent" style="-fx-background-color: black;" text="Kup beczke" textFill="#cda252">
-                     <font>
-                        <Font name="Cooper Black" size="20.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="IdProdukt" layoutX="525.0" layoutY="-3.0" mnemonicParsing="false" onAction="#IdProduktOnActionEvent" style="-fx-background-color: black;" text="Nasze produkty" textFill="#cda252">
-                     <font>
-                        <Font name="Cooper Black" size="20.0" />
-                     </font>
-                  </Button>
-                  <MenuButton layoutX="1135.0" layoutY="-19.0" mnemonicParsing="false"  style="-fx-background-color: black;-fx-base: black;" text="MÓJ PROFIL" textFill="WHITE">
-                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#IdProduktOnActionEvent" style="-fx-background-color: #7a7a7a; -fx-text-color: white;" text="Nasze produkty" />
-                        <MenuItem mnemonicParsing="false" onAction="#IdBeczkaOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Kup beczke" />
-                        <MenuItem mnemonicParsing="false" onAction="#IdWhiskyOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Kup whiskey" />
-                        <MenuItem mnemonicParsing="false" onAction="#wiadomosciOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Wiadomosci" />
-                        <MenuItem mnemonicParsing="false" onAction="#kontaktOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Kontakt" />
-                        <MenuItem mnemonicParsing="false" onAction="#politykaOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Polityka" />
-                        <MenuItem mnemonicParsing="false" onAction="#wylogujOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Wyloguj się" />
-                     </items>
-                     <font>
-                        <Font name="Cooper Black" size="20.0" />
-                     </font>
-                  </MenuButton>
-                  <Button fx:id="buttonKoszyk" layoutX="1059.0" layoutY="-20.0" mnemonicParsing="false" onAction="#koszykOnAction" prefHeight="41.0" prefWidth="63.0" style="-fx-background-color: black;">
-                     <graphic>
-                        <ImageView fitHeight="57.0" fitWidth="65.0" layoutX="1068.0" layoutY="-100.0">
-                           <Image url="@images/koszyk1.PNG" />
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </Pane>
-            <Pane layoutX="36.0" layoutY="118.0" prefHeight="604.0" prefWidth="1250.0" style="-fx-background-color: white;">
-               <children>
-                  <Pane layoutX="8.0" layoutY="7.0">
-                     <children>
-
-                        <AnchorPane minHeight="0.0" minWidth="0.0"  prefHeight="596.0" prefWidth="1241.0">
-                           <children>
-                              <TableView fx:id="Tab" onMouseClicked="#getSelected" prefHeight="589.0" prefWidth="1232.0">
-                                 <columns>
-                                    <TableColumn fx:id="idObraz" prefWidth="377.0" text="obraz" />
-                                    <TableColumn fx:id="idNazwa" prefWidth="300.0" resizable="false" text="nazwa" />
-                                    <TableColumn fx:id="idCena" prefWidth="254.0" resizable="false" text="cena" />
-                                    <TableColumn fx:id="idOpis" prefWidth="156.0" resizable="false" text="opis" />
-                                    <TableColumn fx:id="idP" prefWidth="75.0" text="Column X" visible="false" />
-                                 </columns>
-                              </TableView>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </Pane>
-               </children>
-            </Pane>
-         </children>
-      </AnchorPane>
-   </content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="596.0" prefWidth="1241.0">
+                                    <children>
+                                        <TableView fx:id="Tab" onMouseClicked="#getSelected" prefHeight="589.0"
+                                                   prefWidth="1232.0">
+                                            <columns>
+                                                <TableColumn fx:id="idObraz" prefWidth="377.0" text="obraz"/>
+                                                <TableColumn fx:id="idNazwa" prefWidth="300.0" resizable="false"
+                                                             text="nazwa"/>
+                                                <TableColumn fx:id="idCena" prefWidth="254.0" resizable="false"
+                                                             text="cena"/>
+                                                <TableColumn fx:id="idOpis" prefWidth="156.0" resizable="false"
+                                                             text="opis"/>
+                                                <TableColumn fx:id="idP" prefWidth="75.0" text="Column X"
+                                                             visible="false"/>
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </Pane>
+                    </children>
+                </Pane>
+            </children>
+        </AnchorPane>
+    </content>
 </ScrollPane>

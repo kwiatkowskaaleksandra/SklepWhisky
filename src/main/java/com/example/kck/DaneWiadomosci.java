@@ -27,31 +27,31 @@ public class DaneWiadomosci {
         return data;
     }
 
+    public void setData(Date data) {
+        this.data = data;
+    }
+
     public String getAdresat() {
         return adresat;
-    }
-
-    public String getTemat() {
-        return temat;
-    }
-
-    public String getTresc() {
-        return tresc;
     }
 
     public void setAdresat(String adresat) {
         this.adresat = adresat;
     }
 
-    public void setData(Date data) {
-        this.data = data;
-    }
-
-    public void setTresc(String tresc) {
-        this.tresc = tresc;
+    public String getTemat() {
+        return temat;
     }
 
     public void setTemat(String temat) {
         this.temat = temat;
+    }
+
+    public String getTresc() {
+        return tresc;
+    }
+
+    public void setTresc(String tresc) {
+        this.tresc = tresc;
     }
 }

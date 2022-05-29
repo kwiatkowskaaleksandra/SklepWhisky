@@ -30,6 +30,9 @@ public class Logowanie {
     private Button rejestruj;
     @FXML
     private Button idZarejestruj;
+    @FXML
+    private Button wrocBtn;
+
 
     @FXML
     private TextField idImie;
@@ -93,9 +96,43 @@ public class Logowanie {
                     stage.close();
                 }
             }
-            if(queryResultKl.next()==false ){
+
+            if (queryResultKl.next() == false) {
                 label.setText("Błędny login lub hasło.");
             }
+            statement.close();
+
+            statement=connectDB.createStatement();
+            ResultSet queryResultPr = statement.executeQuery(verifyLoginPr);
+            while (queryResultPr.next()) {
+
+                if (queryResultPr.getString("login").equals(idLogin.getText()) && queryResultPr.getString("haslo").equals(idHaslo.getText())) {
+                    String id = queryResultPr.getString("idPracownika");
+                    try {
+                        PreparedStatement pst = null;
+                        pst = (PreparedStatement) connectDB.prepareStatement(dane);
+                        pst.setString(1, "1");
+                        pst.setString(2, null);
+                        pst.setString(3, id);
+                        pst.setString(4, idLogin.getText());
+                        pst.setString(5, idHaslo.getText());
+                        pst.execute();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        e.getCause();
+                    }
+                    label.setText("Udalo sie zalogowac!");
+                    HelloController helloController = new HelloController();
+                    helloController.KontrolerPracownik();
+                    Stage stage = (Stage) idZaloguj.getScene().getWindow();
+                    stage.close();
+                }
+            }
+            if (queryResultPr.next() == false) {
+                label.setText("Błędny login lub hasło.");
+            }
+            statement.close();
+
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
@@ -138,8 +175,8 @@ public class Logowanie {
                 int localDatee = LocalDate.now().getYear();
                 int date = idData.getValue().getYear();
 
-                int year = localDatee-date;
-                if(year >= 18) {
+                int year = localDatee - date;
+                if (year >= 18) {
                     try {
                         LocalDate localDate = idData.getValue();
                         String formatDate = localDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
@@ -161,12 +198,30 @@ public class Logowanie {
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(null, "Blad rejestracji! ");
                     }
-                }
-                else  {
+                } else {
                     JOptionPane.showMessageDialog(null, "Nie jestes pelnoletni. Strona przeznaczona tylko dla osob powyzej 18 roku zycia.");
                 }
             } else
                 JOptionPane.showMessageDialog(null, "Podane hasła różnią się!");
+        }
+    }
+
+    public void wrocOnAction(ActionEvent event) {
+        Stage stage = (Stage) wrocBtn.getScene().getWindow();
+        stage.close();
+
+        try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("Home.fxml"));
+            Stage menuStage = new Stage();
+            menuStage.initStyle(StageStyle.DECORATED);
+            menuStage.setResizable(false);
+            menuStage.setScene(new Scene(root, 1360, 770));
+            menuStage.setTitle("WHISKY MADNESS");
+            menuStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
         }
     }
 }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="439.0" prefWidth="656.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kck.Ogloszenia">
+    <children>
+        <Label layoutX="240.0" layoutY="14.0" style="-fx-background-color: black;" text="OGLOSZENIA" textFill="#cda252">
+            <font>
+                <Font name="System Bold" size="36.0" />
+            </font>
+        </Label>
+        <Button fx:id="idDodaj" layoutX="305.0" layoutY="347.0" mnemonicParsing="false" onAction="#dodajButtonOnAction" style="-fx-background-color: black;" text="DODAJ" textFill="#cda252">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Button>
+        <TableView fx:id="Tab" layoutX="14.0" layoutY="93.0" onMouseClicked="#getSelected" prefHeight="332.0" prefWidth="273.0">
+            <columns>
+                <TableColumn fx:id="dat" prefWidth="99.0" text="DATA" />
+                <TableColumn fx:id="ogl" prefWidth="180.0" text="OGLOSZENIE" />
+                <TableColumn fx:id="ido" prefWidth="164.0" text="id" visible="false" />
+            </columns>
+        </TableView>
+        <DatePicker fx:id="idData" layoutX="321.0" layoutY="94.0" prefHeight="25.0" prefWidth="225.0" promptText="Data" />
+        <TextArea fx:id="idTresc" layoutX="321.0" layoutY="134.0" prefHeight="200.0" prefWidth="297.0" promptText="Ogloszenie" style="-fx-wrap-text: true;" />
+      <Button fx:id="idEdytuj" layoutX="415.0" layoutY="347.0" mnemonicParsing="false" onAction="#edytujButtonOnAction" style="-fx-background-color: black;" text="EDYTUJ" textFill="#cda252">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="idUsun" layoutX="536.0" layoutY="347.0" mnemonicParsing="false" onAction="#usunButtonOnAction" style="-fx-background-color: black;" text="USUN" textFill="#cda252">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+    </children>
+</AnchorPane>

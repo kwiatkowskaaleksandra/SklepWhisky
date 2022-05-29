@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="439.0" prefWidth="656.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kck.OpiniePracownik">
+    <children>
+        <Label layoutX="262.0" layoutY="14.0" style="-fx-background-color: black;" text="OPINIE" textFill="#cda252">
+            <font>
+                <Font name="System Bold" size="36.0" />
+            </font>
+        </Label>
+        <Button fx:id="idZablokuj" layoutX="366.0" layoutY="367.0" mnemonicParsing="false" onAction="#zablokujButtonOnAction" style="-fx-background-color: black;" text="ZABLOKUJ UZYTKOWNIKA" textFill="#cda252">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Button>
+        <TableView fx:id="Tab" layoutY="77.0" onMouseClicked="#getSelected" prefHeight="357.0" prefWidth="352.0">
+            <columns>
+                <TableColumn fx:id="idOp" editable="false" prefWidth="75.0" text="ID" visible="false" />
+                <TableColumn fx:id="im" prefWidth="75.0" text="IMIE" />
+                <TableColumn fx:id="nazw" prefWidth="84.0" text="NAZWISKO" />
+                <TableColumn fx:id="prod" prefWidth="93.0" text="PRODUKT" />
+                <TableColumn fx:id="dat" prefWidth="95.0" text="DATA" />
+                <TableColumn fx:id="opi" prefWidth="173.0" text="OPINIA" visible="false" />
+            </columns>
+        </TableView>
+      <TextField fx:id="idDane" layoutX="407.0" layoutY="94.0" prefHeight="25.0" prefWidth="200.0" promptText="NAZWISKO I IMIE" />
+      <TextArea fx:id="idTresc" layoutX="405.0" layoutY="140.0" prefHeight="200.0" prefWidth="200.0" promptText="OPINIA" style="-fx-wrap-text: true;" />
+    </children>
+</AnchorPane>

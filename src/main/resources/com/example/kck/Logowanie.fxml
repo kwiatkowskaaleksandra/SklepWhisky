@@ -3,9 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="439.0"
-            prefWidth="548.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kck.Logowanie">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="439.0" prefWidth="548.0" style="-fx-background-color: black;"
+            xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.example.kck.Logowanie">
     <children>
         <Label layoutX="158.0" layoutY="28.0" style="-fx-background-color: black;" text="LOGOWANIE" textFill="#cda252">
             <font>
@@ -40,8 +40,8 @@
                 <Font size="15.0"/>
             </font>
         </Label>
-        <Button fx:id="rejestruj" layoutX="192.0" layoutY="354.0" mnemonicParsing="false" prefHeight="31.0"
-                onAction="#zarejestrujSie" prefWidth="220.0" style="-fx-background-color: black;"
+        <Button fx:id="rejestruj" layoutX="192.0" layoutY="354.0" mnemonicParsing="false" onAction="#zarejestrujSie"
+                prefHeight="31.0" prefWidth="220.0" style="-fx-background-color: black;"
                 text="Zarejestruj sie juz teraz" textFill="#cda252">
             <font>
                 <Font name="System Bold" size="17.0"/>
@@ -52,5 +52,11 @@
                 <Font size="15.0"/>
             </font>
         </Label>
+        <Button fx:id="wrocBtn" layoutX="465.0" layoutY="392.0" mnemonicParsing="false" onAction="#wrocOnAction"
+                text="Wroc" style="-fx-background-color: black;" textFill="#cda252">
+            <font>
+                <Font name="System Bold" size="13.0"/>
+            </font>
+        </Button>
     </children>
 </AnchorPane>
