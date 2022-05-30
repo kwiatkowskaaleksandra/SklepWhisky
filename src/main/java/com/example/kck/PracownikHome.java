@@ -141,7 +141,7 @@ public class PracownikHome implements Initializable {
         stage.close();
         try {
             Parent root;
-            root = FXMLLoader.load(getClass().getResource("NaszeProdukty.fxml"));
+            root = FXMLLoader.load(getClass().getResource("Dodawanie_produktu.fxml"));
             Stage menuStage = new Stage();
             menuStage.initStyle(StageStyle.DECORATED);
             menuStage.setTitle("WHISKY MADNESS");
