@@ -50,26 +50,18 @@ public class BeczkaKontroler implements Initializable {
     @FXML
     private Button IdWhisky;
 
-    public void wyswietlProdukty() {
+    public void wyswietlProdukty() throws SQLException {
         Polaczenie connectNow = new Polaczenie();
         Connection connectDB = connectNow.getConnection();
         final ObservableList WczTab = FXCollections.observableArrayList();
+        Statement st = null;
+        ResultSet rs = null;
+        DaneProdukty daneProdukty;
 
         String danee = "SELECT idProduktu, nazwa, cena, opis, obraz, typ FROM produkty WHERE typ='beczka' order by idProduktu ASC";
-        Statement st = null;
-        try {
-            st = connectDB.createStatement();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        ResultSet rs = null;
-        try {
-            rs = Objects.requireNonNull(st).executeQuery(danee);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        st = connectDB.createStatement();
+        rs = st.executeQuery(danee);
 
-        DaneProdukty daneProdukty;
         try {
             while (Objects.requireNonNull(rs).next()) {
                 int id = rs.getInt("idProduktu");
@@ -90,7 +82,6 @@ public class BeczkaKontroler implements Initializable {
             System.out.println("There is an Exception. " + e);
         }
 
-
         idP.setCellValueFactory(new PropertyValueFactory<>("id"));
         idNazwa.setCellValueFactory(new PropertyValueFactory<>("nazwa"));
         idCena.setCellValueFactory(new PropertyValueFactory<>("cena"));
@@ -98,7 +89,6 @@ public class BeczkaKontroler implements Initializable {
         idObraz.setCellValueFactory(new PropertyValueFactory<>("obraz"));
         Tab.setItems(WczTab);
         addButonToTable();
-
     }
 
     private void addButonToTable() {
@@ -108,7 +98,6 @@ public class BeczkaKontroler implements Initializable {
             public TableCell<DaneProdukty, Void> call(final TableColumn<DaneProdukty, Void> param) {
                 final TableCell<DaneProdukty, Void> cell = new TableCell<DaneProdukty, Void>() {
                     private final Button btn = new Button("Dodaj do koszyka");
-
                     {
                         btn.setOnAction((ActionEvent event) -> {
                             Polaczenie connectNow = new Polaczenie();
@@ -191,7 +180,11 @@ public class BeczkaKontroler implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        wyswietlProdukty();
+        try {
+            wyswietlProdukty();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     public void IdProduktOnActionEvent(javafx.event.ActionEvent event) {
@@ -348,6 +341,24 @@ public class BeczkaKontroler implements Initializable {
         try {
             Parent root;
             root = FXMLLoader.load(getClass().getResource("Moj_profil.fxml"));
+            Stage menuStage = new Stage();
+            menuStage.initStyle(StageStyle.DECORATED);
+            menuStage.setTitle("WHISKY MADNESS");
+            menuStage.setResizable(false);
+            menuStage.setScene(new Scene(root, 1360, 770));
+            menuStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+
+    public void homeOnAction(ActionEvent event) {
+        Stage stage = (Stage) IdProdukt.getScene().getWindow();
+        stage.close();
+        try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
             Stage menuStage = new Stage();
             menuStage.initStyle(StageStyle.DECORATED);
             menuStage.setTitle("WHISKY MADNESS");

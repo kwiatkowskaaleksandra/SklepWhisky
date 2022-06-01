@@ -102,7 +102,7 @@ public class Logowanie {
             }
             statement.close();
 
-            statement=connectDB.createStatement();
+            statement = connectDB.createStatement();
             ResultSet queryResultPr = statement.executeQuery(verifyLoginPr);
             while (queryResultPr.next()) {
 

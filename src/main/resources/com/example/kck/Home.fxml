@@ -1,82 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<ScrollPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity"
-            prefHeight="768.0" prefWidth="1360.0" styleClass="bodybg" stylesheets="@CSS/tlo.css"
-            xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.example.kck.Home">
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" styleClass="bodybg" stylesheets="@CSS/tlo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kck.Home">
     <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="1360.0" styleClass="bodybg"
-                    stylesheets="@CSS/tlo.css">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="1360.0" styleClass="bodybg" stylesheets="@CSS/tlo.css">
             <children>
-                <Pane layoutY="33.0" opacity="0.85" prefHeight="93.0" prefWidth="1360.0"
-                      style="-fx-background-color: black;">
+                <Pane layoutY="33.0" opacity="0.85" prefHeight="93.0" prefWidth="1360.0" style="-fx-background-color: black;">
                     <children>
-                        <Label layoutX="14.0" layoutY="-23.0" text="WHISKY MADNESS" textFill="WHITE">
+                        <Button layoutX="-22.0" layoutY="-42.0" style="-fx-background-color: black;"  onAction="#homeOnAction" text="WHISKY MADNESS" textFill="WHITE">
                             <font>
-                                <Font name="Haettenschweiler" size="64.0"/>
-                            </font>
-                        </Label>
-                        <Button fx:id="IdWhisky" layoutX="941.0" layoutY="-1.0" mnemonicParsing="false"
-                                onAction="#IdWhiskyOnActionEvent" style="-fx-background-color: black;"
-                                text="Kup whiskey" textFill="#cda252">
-                            <font>
-                                <Font name="Cooper Black" size="20.0"/>
+                                <Font name="Haettenschweiler" size="64.0" />
                             </font>
                         </Button>
-                        <Button fx:id="IdBeczka" layoutX="797.0" layoutY="-1.0" mnemonicParsing="false"
-                                onAction="#IdBeczkaOnActionEvent" style="-fx-background-color: black;" text="Kup beczke"
-                                textFill="#cda252">
+                        <Button fx:id="IdWhisky" layoutX="941.0" layoutY="-1.0" mnemonicParsing="false" onAction="#IdWhiskyOnActionEvent" style="-fx-background-color: black;" text="Kup whiskey" textFill="#cda252">
                             <font>
-                                <Font name="Cooper Black" size="20.0"/>
+                                <Font name="Cooper Black" size="20.0" />
                             </font>
                         </Button>
-                        <Button fx:id="IdProdukt" layoutX="609.0" layoutY="-3.0" mnemonicParsing="false"
-                                onAction="#IdProduktOnActionEvent" style="-fx-background-color: black;"
-                                text="Nasze produkty" textFill="#cda252">
+                        <Button fx:id="IdBeczka" layoutX="797.0" layoutY="-1.0" mnemonicParsing="false" onAction="#IdBeczkaOnActionEvent" style="-fx-background-color: black;" text="Kup beczke" textFill="#cda252">
                             <font>
-                                <Font name="Cooper Black" size="20.0"/>
+                                <Font name="Cooper Black" size="20.0" />
                             </font>
                         </Button>
-                        <Button fx:id="zaloguj" layoutX="1203.0" mnemonicParsing="false" prefHeight="34.0"
-                                onAction="#ZalogujOnActionEvent" prefWidth="123.0" text="Zaloguj"
-                                style="-fx-background-color: black;" textFill="#cda252">
+                        <Button fx:id="IdProdukt" layoutX="609.0" layoutY="-3.0" mnemonicParsing="false" onAction="#IdProduktOnActionEvent" style="-fx-background-color: black;" text="Nasze produkty" textFill="#cda252">
                             <font>
-                                <Font name="Cooper Black" size="20.0"/>
+                                <Font name="Cooper Black" size="20.0" />
+                            </font>
+                        </Button>
+                        <Button fx:id="zaloguj" layoutX="1203.0" mnemonicParsing="false" onAction="#ZalogujOnActionEvent" prefHeight="34.0" prefWidth="123.0" style="-fx-background-color: black;" text="Zaloguj" textFill="#cda252">
+                            <font>
+                                <Font name="Cooper Black" size="20.0" />
                             </font>
                         </Button>
                     </children>
                 </Pane>
-                <ImageView fitHeight="352.0" fitWidth="523.0" layoutX="-41.0" layoutY="169.0" pickOnBounds="true"
-                           preserveRatio="true">
+                <ImageView fitHeight="352.0" fitWidth="523.0" layoutX="-41.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@images/jack-background-dark-whisky-daniels-bottle-box.jpg"/>
+                        <Image url="@images/jack-background-dark-whisky-daniels-bottle-box.jpg" />
                     </image>
                 </ImageView>
-                <Label layoutX="21.0" layoutY="476.0" prefHeight="16.0" prefWidth="399.0"
-                       text="JACK DANIELS PROMOCJA 30% TYLKO DO JUTRA !!!" textFill="WHITE">
+                <Label layoutX="21.0" layoutY="476.0" prefHeight="16.0" prefWidth="399.0" text="JACK DANIELS PROMOCJA 30% TYLKO DO JUTRA !!!" textFill="WHITE">
                     <font>
-                        <Font name="Cooper Black" size="14.0"/>
+                        <Font name="Cooper Black" size="14.0" />
                     </font>
                 </Label>
                 <Label layoutX="364.0" layoutY="401.0" text="99,99zł" textFill="WHITE">
                     <font>
-                        <Font size="36.0"/>
+                        <Font size="36.0" />
                     </font>
                 </Label>
-                <Label layoutX="21.0" layoutY="498.0" prefHeight="16.0" prefWidth="399.0" text="KUP TU:"
-                       textFill="WHITE">
+                <Label layoutX="21.0" layoutY="498.0" prefHeight="16.0" prefWidth="399.0" text="KUP TU:" textFill="WHITE">
                     <font>
-                        <Font name="Cooper Black" size="14.0"/>
+                        <Font name="Cooper Black" size="14.0" />
                     </font>
                 </Label>
-                <Button layoutX="96.0" layoutY="494.0" mnemonicParsing="false" style="-fx-background-color: #cda252;"
-                        text="JACK DANIELS " textFill="WHITE"/>
+                <Button layoutX="96.0" layoutY="494.0" mnemonicParsing="false" style="-fx-background-color: #cda252;" text="JACK DANIELS " textFill="WHITE" />
             </children>
         </AnchorPane>
     </content>

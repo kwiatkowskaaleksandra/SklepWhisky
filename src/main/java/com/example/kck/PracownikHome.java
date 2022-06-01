@@ -1,5 +1,6 @@
 package com.example.kck;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,6 +21,10 @@ import java.util.ResourceBundle;
 
 public class PracownikHome implements Initializable {
     @FXML
+    public ListView<String> listaOgloszen;
+    @FXML
+    public ListView<String> listaOpinie;
+    @FXML
     private Button IdProdukty;
     @FXML
     private Button idOgloszeniaBtn;
@@ -29,20 +34,15 @@ public class PracownikHome implements Initializable {
     private Button IdWiadomosci;
     @FXML
     private Button idWyloguj;
-    @FXML
-    public ListView<String> listaOgloszen;
-    @FXML
-    public ListView<String> listaOpinie;
-
 
     Polaczenie connectNow = new Polaczenie();
     Connection connectDB = connectNow.getConnection();
 
-    public void Ogloszenie(){
+    public void Ogloszenie() {
 
         String daneOgl = "SELECT data,tresc FROM ogloszenia";
         Statement st = null;
-        try{
+        try {
             st = connectDB.createStatement();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -57,9 +57,9 @@ public class PracownikHome implements Initializable {
         try {
             while (Objects.requireNonNull(rs).next()) {
 
-                String data =rs.getString("data");
+                String data = rs.getString("data");
                 String tresc = rs.getString("tresc");
-                listaOgloszen.getItems().addAll(data+" - "+tresc);
+                listaOgloszen.getItems().addAll(data + " - " + tresc);
             }
             st.close();
         } catch (Exception e) {
@@ -68,10 +68,10 @@ public class PracownikHome implements Initializable {
         }
     }
 
-    public void Opinie(){
+    public void Opinie() {
         String daneO = "SELECT o.tresc, o.data, p.nazwa  FROM opinie o, produkty p WHERE o.idProduktu= p.idProduktu";
         Statement st2 = null;
-        try{
+        try {
             st2 = connectDB.createStatement();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -86,10 +86,10 @@ public class PracownikHome implements Initializable {
         try {
             while (Objects.requireNonNull(rs2).next()) {
 
-                String data =rs2.getString("data");
+                String data = rs2.getString("data");
                 String tresc = rs2.getString("tresc");
-                String nazwa=rs2.getString("nazwa");
-                listaOpinie.getItems().addAll(data+"  -  "+nazwa+"  -  "+tresc);
+                String nazwa = rs2.getString("nazwa");
+                listaOpinie.getItems().addAll(data + "  -  " + nazwa + "  -  " + tresc);
             }
             st2.close();
         } catch (Exception e) {
@@ -155,31 +155,12 @@ public class PracownikHome implements Initializable {
 
     }
 
-    public void IdFakturyOnActionEvent(javafx.event.ActionEvent event) {
-        Stage stage = (Stage) IdFaktury.getScene().getWindow();
-        stage.close();
-        try {
-            Parent root;
-            root = FXMLLoader.load(getClass().getResource("KupBeczke.fxml"));
-            Stage menuStage = new Stage();
-            menuStage.initStyle(StageStyle.DECORATED);
-            menuStage.setTitle("WHISKY MADNESS");
-            menuStage.setResizable(false);
-            menuStage.setScene(new Scene(root, 1360, 770));
-            menuStage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-            e.getCause();
-        }
-
-    }
-
     public void IdWiadomosciOnActionEvent(javafx.event.ActionEvent event) {
         Stage stage = (Stage) IdWiadomosci.getScene().getWindow();
         stage.close();
         try {
             Parent root;
-            root = FXMLLoader.load(getClass().getResource("Wiadomosci.fxml"));
+            root = FXMLLoader.load(getClass().getResource("WiadomosciPracownik.fxml"));
             Stage menuStage = new Stage();
             menuStage.initStyle(StageStyle.DECORATED);
             menuStage.setTitle("WHISKY MADNESS");
@@ -212,9 +193,27 @@ public class PracownikHome implements Initializable {
         }
     }
 
+    public void homeOnAction(ActionEvent event) {
+        Stage stage = (Stage) IdProdukty.getScene().getWindow();
+        stage.close();
+        try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("StronaPracownika.fxml"));
+            Stage menuStage = new Stage();
+            menuStage.initStyle(StageStyle.DECORATED);
+            menuStage.setTitle("WHISKY MADNESS");
+            menuStage.setResizable(false);
+            menuStage.setScene(new Scene(root, 1360, 770));
+            menuStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-            Ogloszenie();
-            Opinie();
+        Ogloszenie();
+        Opinie();
     }
 }

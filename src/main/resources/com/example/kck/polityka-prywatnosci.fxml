@@ -17,11 +17,11 @@
                 <Pane layoutY="33.0" opacity="0.85" prefHeight="93.0" prefWidth="1360.0"
                       style="-fx-background-color: black;">
                     <children>
-                        <Label layoutX="14.0" layoutY="-23.0" text="WHISKY MADNESS" textFill="WHITE">
+                        <Button layoutX="-22.0" layoutY="-42.0" style="-fx-background-color: black;"  onAction="#homeOnAction" text="WHISKY MADNESS" textFill="WHITE">
                             <font>
-                                <Font name="Haettenschweiler" size="64.0"/>
+                                <Font name="Haettenschweiler" size="64.0" />
                             </font>
-                        </Label>
+                        </Button>
                         <Button fx:id="IdWhisky" layoutX="862.0" layoutY="-1.0" mnemonicParsing="false"
                                 onAction="#IdWhiskyOnActionEvent" style="-fx-background-color: black;"
                                 text="Kup whiskey" textFill="#cda252">

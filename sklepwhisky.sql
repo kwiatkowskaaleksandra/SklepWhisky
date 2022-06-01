@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 27 Maj 2022, 21:58
+-- Czas generowania: 01 Cze 2022, 12:27
 -- Wersja serwera: 10.4.17-MariaDB
 -- Wersja PHP: 8.0.2
 
@@ -20,6 +20,51 @@ SET time_zone = "+00:00";
 --
 -- Baza danych: `sklepwhisky`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `faktury`
+--
+
+CREATE TABLE `faktury` (
+  `idFaktury` int(10) NOT NULL,
+  `idKlienta` int(10) NOT NULL,
+  `kwota` float NOT NULL,
+  `data` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Zrzut danych tabeli `faktury`
+--
+
+INSERT INTO `faktury` (`idFaktury`, `idKlienta`, `kwota`, `data`) VALUES
+(1, 1, 1048, '2022-06-01'),
+(2, 2, 1000, '2022-06-01');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `historia`
+--
+
+CREATE TABLE `historia` (
+  `idHistoria` int(10) NOT NULL,
+  `idKlienta` int(10) NOT NULL,
+  `idProduktu` int(11) NOT NULL,
+  `ilosc` int(11) NOT NULL,
+  `idFaktury` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Zrzut danych tabeli `historia`
+--
+
+INSERT INTO `historia` (`idHistoria`, `idKlienta`, `idProduktu`, `ilosc`, `idFaktury`) VALUES
+(1, 1, 1, 1, 1),
+(2, 1, 10, 1, 1),
+(3, 1, 2, 2, 1),
+(4, 2, 1, 5, 2);
 
 -- --------------------------------------------------------
 
@@ -42,12 +87,8 @@ CREATE TABLE `klient` (
 --
 
 INSERT INTO `klient` (`idKlienta`, `imie`, `nazwisko`, `email`, `login`, `haslo`, `dataUr`) VALUES
-(1, 'klient', 'klient', 'klient', 'k', 'k', '2022-05-04'),
-(2, 'ola', 'ola', 'ola', 'ola', 'ola', '2022-04-27'),
-(3, 'ola', 'kola', 'jarek', 'jarek', 'jarek', '2022-04-05'),
-(4, 'fr', 'fry', 'ui', 'io', 'io', '2022-04-29'),
-(5, 'ju', 'ju', 'ju', 'ju', 'ju', '2022-05-16'),
-(6, '12', '12', '12', '12', '12', '2000-05-02');
+(1, 'Jaroslaw', 'Kot', 'jarek@kot.pl', 'jarek', 'jarek', '1999-04-14'),
+(2, 'Marysia', 'Kwiatek', 'marysia@wp.pl', 'marysia', 'marysia', '1999-06-07');
 
 -- --------------------------------------------------------
 
@@ -63,15 +104,50 @@ CREATE TABLE `koszyk` (
   `ilosc` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Zrzut danych tabeli `koszyk`
+-- Struktura tabeli dla tabeli `ogloszenia`
 --
 
-INSERT INTO `koszyk` (`idKoszyk`, `idProduktu`, `cenaCalosc`, `idKlienta`, `ilosc`) VALUES
-(1, 3, 232, 1, 1),
-(2, 1, 123.22, 1, 1),
-(3, 3, 232, 1, 1),
-(4, 2, 232, 1, 1);
+CREATE TABLE `ogloszenia` (
+  `idOgloszenia` int(10) NOT NULL,
+  `data` date NOT NULL,
+  `tresc` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Zrzut danych tabeli `ogloszenia`
+--
+
+INSERT INTO `ogloszenia` (`idOgloszenia`, `data`, `tresc`) VALUES
+(1, '2022-06-07', 'Zebranie pracownikow'),
+(2, '2022-07-19', 'Aktualizacja produktow'),
+(3, '2022-06-17', 'Prace serwisowe'),
+(4, '2022-06-01', 'Dzien dziecka - dzien wolny');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `opinie`
+--
+
+CREATE TABLE `opinie` (
+  `idOpinia` int(10) NOT NULL,
+  `tresc` varchar(200) DEFAULT NULL,
+  `data` date DEFAULT NULL,
+  `idKlienta` int(10) DEFAULT NULL,
+  `idProduktu` int(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Zrzut danych tabeli `opinie`
+--
+
+INSERT INTO `opinie` (`idOpinia`, `tresc`, `data`, `idKlienta`, `idProduktu`) VALUES
+(1, 'Porzadny produkt', '2022-06-01', 1, 10),
+(2, 'Bardzo dobra whisky', '2022-06-01', 1, 1),
+(3, 'POLEEECAAAM !', '2022-06-01', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -93,8 +169,7 @@ CREATE TABLE `pracownik` (
 --
 
 INSERT INTO `pracownik` (`idPracownika`, `imie`, `nazwisko`, `email`, `login`, `haslo`) VALUES
-(1, 'ola', 'kwiatek', 'ola@wp.pl', 'p', 'p'),
-(2, 'jarek', 'jarek', 'jarek@wp.pl', 'jarek', 'jarek');
+(1, 'Jan', 'Kowalski', 'janek@kowal.pl', 'p', 'p');
 
 -- --------------------------------------------------------
 
@@ -106,8 +181,8 @@ CREATE TABLE `produkty` (
   `idProduktu` int(11) NOT NULL,
   `nazwa` varchar(100) NOT NULL,
   `cena` float NOT NULL,
-  `opis` varchar(200) NOT NULL,
-  `obraz` varchar(100) NOT NULL,
+  `opis` varchar(900) NOT NULL,
+  `obraz` varchar(900) NOT NULL,
   `typ` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -116,9 +191,36 @@ CREATE TABLE `produkty` (
 --
 
 INSERT INTO `produkty` (`idProduktu`, `nazwa`, `cena`, `opis`, `obraz`, `typ`) VALUES
-(1, 'whisky1', 123.22, 'dobra', '1481207121.054.jpg', 'alko'),
-(2, 'whiksu2', 232, 'wewe', '1481209209.2814.jpg', 'alko'),
-(3, 'whisky3', 232, 'rerere', '3585_wo_dka-de_bowa-p3olska-beczka-czarne-obr.1_0_40_.jpg', 'beczka');
+(1, 'Clynelish | 0,7L', 200, 'Clynelish 14 yo to zdecydowanie warty uwagi single malt ze znanego szkockiego regionu Highlands, który został zabutelkowany w mocy 46% ABV. Przedstawia połączenie nut cytrusowych z pikantnym dębem i słodkim akcentem miodowym oraz dymnością. Oferuje także satysfakcjonujący finisz z nutami miodu.', 'clynelish-14-yo.jpg', 'alko'),
+(2, 'Glenkinchie | 0,7L', 199, 'Glenkinchie 12 yo to bardzo ciekawy i ceniony single malt pochodzący ze znanego szkockiego regionu Lowlands. Producenci postawili na zabutelkowanie go w mocy 43% ABV. Przede wszystkim, przedstawia świetnie skomponowaną mieszankę nut owocowych, miodowych oraz lekko pikantnego dębu.', 'glenkinchie-12-yo.jpg', 'alko'),
+(3, 'Bunnahabhain 0,7L', 256, 'Bunnahabhain whisky 12 yo to bardzo ciekawa edycja dostępna na rynku od 2010 roku. Przede wszystkim, wielu miłośników whisky szanuje ją z uwagi na zawartość alkoholu podniesioną do 46,3% ABV oraz brak dodatku karmelu i filtracji na zimno.', 'Bunnahabhain-12.png', 'alko'),
+(4, 'Jack Daniel’s Black Label | 0.7L', 95.88, 'Wersja Black Label niesie ze sobą dużo więcej smakowych doznań niż jej młodszy “czerwony” brat. Przy próbowaniu tej whisky pierwsze, co rzuca się w oczy to kolor, ten jest bursztynowy i przypomina barwą klasyczną przepalankę.', 'jack-daniels-jack-daniels-black-label-gift-box.jpg', 'alko'),
+(5, 'Super Nikka Whisky Rare Old | 0,7L', 239.99, 'Ta bardzo ciekawa japońska whisky to blend whisky słodowych z zakładów Yoichi oraz Miyagikyo. Zapach ma kwiatowy, skórzany, dębowy, wyczuwalne są również przyprawy, szałwia oraz owoce. Na języku jest miękka, słodkawa. Słodycz następnie przechodzi w cytrusowy smak, w tle grają cynamon, goździki i słone orzeszki. W finiszu obecne są nuty dębowe, tytoniowe, ale również karmelowe. ', '000271_51062_03.jpg', 'alko'),
+(6, 'BECZKA DREWNIANA 3L', 349.99, 'Postarzaj swoje własne alkohole w ekstrawaganckiej 3 litrowej dębowej beczce. W zestawie dodatkowo kranik wraz ze stojakiem i instrukcja dotycząca sezonowania, korzystania z beczki tak, aby służyła długie lata.', 'beczka.PNG', 'beczka'),
+(7, 'Beczka dębowa', 421.12, 'Beczka wykonana jest ze starodrzewia dębu (200-letnie dęby) o wysokiej jakości.', 'beczka-do-whisky.png', 'beczka'),
+(8, 'DĘBOWE BECZKI DO WHISKY 3L', 210, 'Korpus beczki składa się z zewnętrznej powłoki z drewna sosnowego i podszewki z folii aluminiowej klasy spożywczej, która jest trwalsza i może być używana przez długi czas.', '0_0_productGfx_a6b427f1759c73dad35d92e1e99a9d7e.jpg', 'beczka'),
+(9, 'Beczka na whisky drewno sosnowe 3L', 320, 'Drewniana beczka na alkohol , która swym wyglądem przeniesie Cię do Hiszpańskich winnic lub szkockich destylarni whisky. ', 'whisky-timberman-6y-beczka-czarna-ze-zlotymi-obreczami-poj-1-l.jpg', 'beczka'),
+(10, 'Szklana beczułka 1L + szklanki', 450, 'Przepiękna, ekskluzywna beczka szklana o pojemności 1L, wykonana z grubego szkła w komplecie z plastikowym kranikiem, korkiem i drewnianą podstawką na 6 kieliszków oraz kieliszkami.', 'beczka1.PNG', 'beczka');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `rabat`
+--
+
+CREATE TABLE `rabat` (
+  `idRabat` int(11) NOT NULL,
+  `kod` varchar(10) NOT NULL,
+  `wartosc` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Zrzut danych tabeli `rabat`
+--
+
+INSERT INTO `rabat` (`idRabat`, `kod`, `wartosc`) VALUES
+(1, 'RABAT29', 34),
+(2, 'RABAT88', 47);
 
 -- --------------------------------------------------------
 
@@ -142,20 +244,9 @@ CREATE TABLE `wiadomosci` (
 --
 
 INSERT INTO `wiadomosci` (`idWiadomosci`, `temat`, `adresat`, `tresc`, `data`, `idPracownika`, `idKlienta`, `stan`) VALUES
-(1, 'temat1', 'biuroObslugi@whiskyMadness.com', 'trtrtrtr', '2022-05-03', 1, 1, 'odebranaK'),
-(2, 'temat2', 'biuroObslugi@whiskyMadness.com', 't2222rtrtrtr', '2022-10-03', 1, 1, 'odebranaK'),
-(3, 'kupowanie', 'biuroObslugi@whiskyMadness.com', 'czemu od 18 ?!', '2022-05-25', 1, 1, 'odebranaK'),
-(4, 'tgtrg', 'biuroObslugi@whiskyMadness.com', '66u7uujj', '2022-05-25', 1, 1, 'odebranaK'),
-(5, 'yhh', 'biuroObslugi@whiskyMadness.com', '665656yjuygvf', '2022-05-25', 1, 1, 'odebranaP'),
-(6, 'yhh', 'biuroObslugi@whiskyMadness.com', '665656yjuygvf', '2022-05-25', 2, 1, 'odebranaP'),
-(7, '45tgr', 'biuroObslugi@whiskyMadness.com', 'yrgtfrdswdfghjyuhgere', '2022-05-25', 1, 1, 'odebranaP'),
-(8, '45tgr', 'biuroObslugi@whiskyMadness.com', 'yrgtfrdswdfghjyuhgere', '2022-05-25', 2, 1, 'odebranaK'),
-(9, 'RE: 45tgr', 'biuroObslugi@whiskyMadness.com', 'yrgtfrdswdfghjyuhgere', '2022-05-25', 1, 1, 'odebranaK'),
-(10, 'RE: 45tgr', 'biuroObslugi@whiskyMadness.com', 'yrgtfrdswdfghjyuhgere', '2022-05-25', 2, 1, 'odebranaK'),
-(11, 'RE: yhh', 'biuroObslugi@whiskyMadness.com', 'blablabla', '2022-05-25', 1, 1, 'odebranaK'),
-(12, 'RE: yhh', 'biuroObslugi@whiskyMadness.com', 'blablabla', '2022-05-25', 2, 1, 'odebranaK'),
-(13, 'RE: yhh', 'biuroObslugi@whiskyMadness.com', 'tgerrgthyujoiluyjhgtrews', '2022-05-25', 1, 1, 'odebranaK'),
-(14, 'RE: yhh', 'biuroObslugi@whiskyMadness.com', 'tgerrgthyujoiluyjhgtrews', '2022-05-25', 2, 1, 'odebranaK');
+(1, 'Zamowienie', 'biuroObslugi@whiskyMadness.com', 'Dzien dobry!\nTwoje zamowienie zostalo przyjete do realizacji. Calkowity koszt to: \'1048.0\'zl. Kod rabatowy na nastepne zakupy: \'RABAT29\'.\nDziekujemy za skorzystanie z naszego sklepu. Zapraszamy ponownie!\nPozdrawiamy WHISKY MADNESS.', '2022-06-01', 1, 1, 'odebranaP'),
+(2, 'Zamowienie', 'biuroObslugi@whiskyMadness.com', 'Dzien dobry!\nTwoje zamowienie zostalo przyjete do realizacji. Calkowity koszt to: \'1000.0\'zl. Kod rabatowy na nastepne zakupy: \'RABAT88\'.\nDziekujemy za skorzystanie z naszego sklepu. Zapraszamy ponownie!\nPozdrawiamy WHISKY MADNESS.', '2022-06-01', 1, 2, 'odebranaP'),
+(3, 'Zwrot', 'marysia@wp.pl', 'Dzien dobry,\njak mozna zwrocic produkt ?', '2022-06-01', 1, 2, 'odebranaK');
 
 -- --------------------------------------------------------
 
@@ -176,11 +267,27 @@ CREATE TABLE `zalogowany` (
 --
 
 INSERT INTO `zalogowany` (`idZalogowanego`, `idKlienta`, `idPracownika`, `login`, `haslo`) VALUES
-(1, 1, NULL, 'k', 'k');
+(1, NULL, 1, 'p', 'p');
 
 --
 -- Indeksy dla zrzutów tabel
 --
+
+--
+-- Indeksy dla tabeli `faktury`
+--
+ALTER TABLE `faktury`
+  ADD PRIMARY KEY (`idFaktury`),
+  ADD KEY `fk_fakt_kl` (`idKlienta`);
+
+--
+-- Indeksy dla tabeli `historia`
+--
+ALTER TABLE `historia`
+  ADD PRIMARY KEY (`idHistoria`),
+  ADD KEY `fk_kl_fakt` (`idKlienta`),
+  ADD KEY `his_prod_fk` (`idProduktu`),
+  ADD KEY `fk_fakt_hist` (`idFaktury`);
 
 --
 -- Indeksy dla tabeli `klient`
@@ -197,6 +304,14 @@ ALTER TABLE `koszyk`
   ADD KEY `kosz_kl` (`idKlienta`);
 
 --
+-- Indeksy dla tabeli `opinie`
+--
+ALTER TABLE `opinie`
+  ADD PRIMARY KEY (`idOpinia`),
+  ADD KEY `op_kl_fk` (`idKlienta`),
+  ADD KEY `op_pr_fk` (`idProduktu`);
+
+--
 -- Indeksy dla tabeli `pracownik`
 --
 ALTER TABLE `pracownik`
@@ -207,6 +322,12 @@ ALTER TABLE `pracownik`
 --
 ALTER TABLE `produkty`
   ADD PRIMARY KEY (`idProduktu`);
+
+--
+-- Indeksy dla tabeli `rabat`
+--
+ALTER TABLE `rabat`
+  ADD PRIMARY KEY (`idRabat`);
 
 --
 -- Indeksy dla tabeli `wiadomosci`
@@ -232,31 +353,37 @@ ALTER TABLE `zalogowany`
 -- AUTO_INCREMENT dla tabeli `klient`
 --
 ALTER TABLE `klient`
-  MODIFY `idKlienta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idKlienta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT dla tabeli `koszyk`
 --
 ALTER TABLE `koszyk`
-  MODIFY `idKoszyk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `idKoszyk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT dla tabeli `pracownik`
 --
 ALTER TABLE `pracownik`
-  MODIFY `idPracownika` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idPracownika` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT dla tabeli `produkty`
 --
 ALTER TABLE `produkty`
-  MODIFY `idProduktu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idProduktu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT dla tabeli `rabat`
+--
+ALTER TABLE `rabat`
+  MODIFY `idRabat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT dla tabeli `wiadomosci`
 --
 ALTER TABLE `wiadomosci`
-  MODIFY `idWiadomosci` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idWiadomosci` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT dla tabeli `zalogowany`
@@ -269,11 +396,32 @@ ALTER TABLE `zalogowany`
 --
 
 --
+-- Ograniczenia dla tabeli `faktury`
+--
+ALTER TABLE `faktury`
+  ADD CONSTRAINT `fk_fakt_kl` FOREIGN KEY (`idKlienta`) REFERENCES `klient` (`idKlienta`);
+
+--
+-- Ograniczenia dla tabeli `historia`
+--
+ALTER TABLE `historia`
+  ADD CONSTRAINT `fk_fakt_hist` FOREIGN KEY (`idFaktury`) REFERENCES `faktury` (`idFaktury`),
+  ADD CONSTRAINT `fk_kl_fakt` FOREIGN KEY (`idKlienta`) REFERENCES `klient` (`idKlienta`),
+  ADD CONSTRAINT `his_prod_fk` FOREIGN KEY (`idProduktu`) REFERENCES `produkty` (`idProduktu`);
+
+--
 -- Ograniczenia dla tabeli `koszyk`
 --
 ALTER TABLE `koszyk`
   ADD CONSTRAINT `kosz_kl` FOREIGN KEY (`idKlienta`) REFERENCES `klient` (`idKlienta`),
   ADD CONSTRAINT `kosz_pro` FOREIGN KEY (`idProduktu`) REFERENCES `produkty` (`idProduktu`);
+
+--
+-- Ograniczenia dla tabeli `opinie`
+--
+ALTER TABLE `opinie`
+  ADD CONSTRAINT `op_kl_fk` FOREIGN KEY (`idKlienta`) REFERENCES `klient` (`idKlienta`),
+  ADD CONSTRAINT `op_pr_fk` FOREIGN KEY (`idProduktu`) REFERENCES `produkty` (`idProduktu`);
 
 --
 -- Ograniczenia dla tabeli `wiadomosci`

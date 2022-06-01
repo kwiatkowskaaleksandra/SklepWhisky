@@ -218,4 +218,22 @@ public class HelloController {
             e.getCause();
         }
     }
+
+    public void homeOnAction(ActionEvent event) {
+        Stage stage = (Stage) IdProdukt.getScene().getWindow();
+        stage.close();
+        try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
+            Stage menuStage = new Stage();
+            menuStage.initStyle(StageStyle.DECORATED);
+            menuStage.setTitle("WHISKY MADNESS");
+            menuStage.setResizable(false);
+            menuStage.setScene(new Scene(root, 1360, 770));
+            menuStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
 }

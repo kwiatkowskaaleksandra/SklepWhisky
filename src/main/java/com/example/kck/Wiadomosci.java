@@ -45,6 +45,18 @@ public class Wiadomosci implements Initializable {
     @FXML
     private TableColumn<DaneWiadomosci, String> idTrescW;
     @FXML
+    private TableView<DaneWiadomosci> Tab1;
+    @FXML
+    private TableColumn<DaneWiadomosci, Integer> idW1;
+    @FXML
+    private TableColumn<DaneWiadomosci, String> idOd1;
+    @FXML
+    private TableColumn<DaneWiadomosci, String> idTemat1;
+    @FXML
+    private TableColumn<DaneWiadomosci, String> idData1;
+    @FXML
+    private TableColumn<DaneWiadomosci, String> idTrescW1;
+    @FXML
     private Label idDane;
     @FXML
     private Label idKto;
@@ -56,8 +68,12 @@ public class Wiadomosci implements Initializable {
     private TextArea idTresc;
     @FXML
     private Button idOdp;
+    @FXML
+    private Tab wyslana;
+    @FXML
+    private Tab odebrana;
 
-    public void wyswietlWiadomosci() throws SQLException, IOException {
+    public void odebraneOnAction() throws SQLException, IOException {
         final ObservableList WczTab = FXCollections.observableArrayList();
         DaneWiadomosci daneWiadomosci;
         Statement st = null;
@@ -109,22 +125,83 @@ public class Wiadomosci implements Initializable {
         Tab.setItems(WczTab);
     }
 
-    public void getSelected() throws SQLException {
-        this.index = this.Tab.getSelectionModel().getSelectedIndex();
-        if (this.index <= -1) {
-            return;
+    public void wyslaneOnAction() throws SQLException, IOException {
+        final ObservableList WczTab = FXCollections.observableArrayList();
+        DaneWiadomosci daneWiadomosci;
+        Statement st = null;
+        ResultSet rs = null;
+
+        st = connectDB.createStatement();
+        String dane = "SELECT idKlienta FROM zalogowany";
+        rs = st.executeQuery(dane);
+        int idZal = 0;
+        while (rs.next()) {
+            idZal = rs.getInt("idKlienta");
         }
-        idKto.setText("OD:");
-        this.idDo.setText(this.idOd.getCellData(this.index));
-        this.idTemW.setText(this.idTemat.getCellData(this.index));
-        this.idTresc.setText(this.idTrescW.getCellData(this.index));
+        st.close();
+
+        st = connectDB.createStatement();
+        String dane2 = "SELECT imie, nazwisko FROM klient k WHERE k.idKlienta='" + idZal + "'";
+        rs = st.executeQuery(dane2);
+        while (rs.next()) {
+            String imie = rs.getString("imie");
+            String nazwisko = rs.getString("nazwisko");
+            idDane.setText(imie + " " + nazwisko);
+        }
+        st.close();
+
+        st = connectDB.createStatement();
+        String dane3 = "SELECT w.idWiadomosci,temat,adresat,tresc,data , imie, nazwisko FROM wiadomosci w , klient k WHERE w.idKlienta=k.idKlienta and  w.idKlienta='" + idZal + "'AND stan='odebranaK' AND w.idPracownika=1";
+        rs = st.executeQuery(dane3);
+        try {
+            while (rs.next()) {
+                int id = rs.getInt("idWiadomosci");
+                String temat = rs.getString("temat");
+                String adresat = rs.getString("adresat");
+                String tresc = rs.getString("tresc");
+                Date data = rs.getDate("data");
+                daneWiadomosci = new DaneWiadomosci(id, temat, adresat, tresc, data);
+                WczTab.add(daneWiadomosci);
+            }
+            st.close();
+        } catch (Exception e) {
+            System.out.println("There is an Exception.");
+            System.out.println(e.getMessage());
+        }
+
+        idW1.setCellValueFactory(new PropertyValueFactory<>("id"));
+        idTemat1.setCellValueFactory(new PropertyValueFactory<>("temat"));
+        idData1.setCellValueFactory(new PropertyValueFactory<>("data"));
+        idOd1.setCellValueFactory(new PropertyValueFactory<>("adresat"));
+        idTrescW1.setCellValueFactory(new PropertyValueFactory<>("tresc"));
+        Tab1.setItems(WczTab);
+    }
+
+    public void getSelected() throws SQLException {
+        if (odebrana.isSelected()) {
+            this.index = this.Tab.getSelectionModel().getSelectedIndex();
+            if (this.index <= -1) {
+                return;
+            }
+            this.idDo.setText(this.idOd.getCellData(this.index));
+            this.idTemW.setText(this.idTemat.getCellData(this.index));
+            this.idTresc.setText(this.idTrescW.getCellData(this.index));
+        } else if (wyslana.isSelected()) {
+            this.index = this.Tab1.getSelectionModel().getSelectedIndex();
+            if (this.index <= -1) {
+                return;
+            }
+            this.idDo.setText(this.idOd1.getCellData(this.index));
+            this.idTemW.setText(this.idTemat1.getCellData(this.index));
+            this.idTresc.setText(this.idTrescW1.getCellData(this.index));
+        }
     }
 
     public void wyslijOnActionEvent(ActionEvent event) throws SQLException {
         Polaczenie connectNow = new Polaczenie();
         Connection connectDB = connectNow.getConnection();
         Statement stat, stat2 = null;
-        ResultSet rs, rs2 = null;
+        ResultSet rs = null, rs2 = null;
 
         int idw = 0;
 
@@ -135,7 +212,6 @@ public class Wiadomosci implements Initializable {
         while (rs2.next()) {
             idP = rs2.getInt("idPracownika");
 
-
             stat2 = connectDB.createStatement();
             String maxID = "SELECT idWiadomosci FROM wiadomosci order BY idWiadomosci ASC";
             rs = stat2.executeQuery(maxID);
@@ -145,11 +221,14 @@ public class Wiadomosci implements Initializable {
             stat2.close();
 
             stat2 = connectDB.createStatement();
-            String dane = "SELECT idKlienta FROM zalogowany";
+            String dane = "SELECT k.idKlienta, k.email FROM zalogowany z , klient k WHERE z.idKlienta=k.idKlienta";
             rs = stat2.executeQuery(dane);
             int idZal = 0;
+            String em = null;
             while (rs.next()) {
-                idZal = rs.getInt("idKlienta");
+                idZal = rs.getInt("k.idKlienta");
+                em = rs.getString("k.email");
+                System.out.println(em);
             }
             stat2.close();
 
@@ -158,19 +237,25 @@ public class Wiadomosci implements Initializable {
                 pst = (PreparedStatement) connectDB.prepareStatement(daneW);
                 pst.setString(1, String.valueOf(idw + 1));
                 pst.setString(2, idTemW.getText());
-                pst.setString(3, idDo.getText());
+                pst.setString(3, em);
                 pst.setString(4, idTresc.getText());
                 pst.setString(5, String.valueOf(LocalDate.now()));
                 pst.setString(6, String.valueOf(idP));
                 pst.setString(7, String.valueOf(idZal));
                 pst.setString(8, "odebranaK");
                 pst.execute();
-
-                wyswietlWiadomosci();
+                JOptionPane.showMessageDialog(null, "Wiadomosc zostala wyslana! ");
+                if (wyslana.isSelected()) {
+                    wyslaneOnAction();
+                } else if (odebrana.isSelected()) {
+                    odebraneOnAction();
+                }
+                idDo.clear();
+                idTresc.clear();
+                idTemW.clear();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Blad dodawania! " + e);
             }
-            JOptionPane.showMessageDialog(null, "Wiadomosc zostala wyslana! ");
         }
         stat.close();
     }
@@ -210,11 +295,13 @@ public class Wiadomosci implements Initializable {
                     stat2.close();
 
                     stat2 = connectDB.createStatement();
-                    String dane = "SELECT idKlienta FROM zalogowany";
+                    String dane = "SELECT k.idKlienta, k.email FROM zalogowany z , klient k WHERE z.idKlienta=k.idKlienta";
                     rs = stat2.executeQuery(dane);
                     int idZal = 0;
+                    String em = null;
                     while (rs.next()) {
-                        idZal = rs.getInt("idKlienta");
+                        idZal = rs.getInt("k.idKlienta");
+                        em = rs.getString("k.email");
                     }
                     stat2.close();
 
@@ -223,15 +310,21 @@ public class Wiadomosci implements Initializable {
                         pst = (PreparedStatement) connectDB.prepareStatement(daneW);
                         pst.setString(1, String.valueOf(idw + 1));
                         pst.setString(2, idTemW.getText());
-                        pst.setString(3, idDo.getText());
+                        pst.setString(3, em);
                         pst.setString(4, idTresc.getText());
                         pst.setString(5, String.valueOf(LocalDate.now()));
                         pst.setString(6, String.valueOf(idP));
                         pst.setString(7, String.valueOf(idZal));
                         pst.setString(8, "odebranaK");
                         pst.execute();
-
-                        wyswietlWiadomosci();
+                        if (wyslana.isSelected()) {
+                            wyslaneOnAction();
+                        } else if (odebrana.isSelected()) {
+                            odebraneOnAction();
+                        }
+                        idDo.clear();
+                        idTresc.clear();
+                        idTemW.clear();
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(null, "Blad dodawania! " + e);
                     }
@@ -243,7 +336,6 @@ public class Wiadomosci implements Initializable {
             JOptionPane.showMessageDialog(null, "Wiadomosc zostala wyslana! ");
         });
     }
-
 
     public void IdProduktOnActionEvent(javafx.event.ActionEvent event) {
         Stage stage = (Stage) IdProdukt.getScene().getWindow();
@@ -410,10 +502,28 @@ public class Wiadomosci implements Initializable {
         }
     }
 
+    public void homeOnAction(ActionEvent event) {
+        Stage stage = (Stage) IdProdukt.getScene().getWindow();
+        stage.close();
+        try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
+            Stage menuStage = new Stage();
+            menuStage.initStyle(StageStyle.DECORATED);
+            menuStage.setTitle("WHISKY MADNESS");
+            menuStage.setResizable(false);
+            menuStage.setScene(new Scene(root, 1360, 770));
+            menuStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            wyswietlWiadomosci();
+            odebraneOnAction();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (IOException e) {

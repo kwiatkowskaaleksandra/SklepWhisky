@@ -1,75 +1,165 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" styleClass="bodybg" stylesheets="@CSS/tlo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kck.Faktury">
+<ScrollPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="768.0" prefWidth="1360.0" styleClass="bodybg" stylesheets="@CSS/tlo.css"
+            xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.example.kck.Faktury">
     <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: black;">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="1360.0"
+                    style="-fx-background-color: black;">
             <children>
-                <Pane layoutY="33.0" opacity="0.85" prefHeight="93.0" prefWidth="1360.0" style="-fx-background-color: black;">
+                <Pane layoutY="33.0" opacity="0.85" prefHeight="93.0" prefWidth="1360.0"
+                      style="-fx-background-color: black;">
                     <children>
-                        <Label layoutX="14.0" layoutY="-23.0" text="WHISKY MADNESS" textFill="WHITE">
+                        <Button layoutX="-22.0" layoutY="-42.0" style="-fx-background-color: black;"  onAction="#homeOnAction" text="WHISKY MADNESS" textFill="WHITE">
                             <font>
                                 <Font name="Haettenschweiler" size="64.0" />
                             </font>
-                        </Label>
-                        <Button fx:id="IdWhisky" layoutX="862.0" layoutY="-1.0" mnemonicParsing="false" onAction="#IdWhiskyOnActionEvent" style="-fx-background-color: black;" text="Kup whiskey" textFill="#cda252">
+                        </Button>
+                        <Button fx:id="IdWhisky" layoutX="862.0" layoutY="-1.0" mnemonicParsing="false"
+                                onAction="#IdWhiskyOnActionEvent" style="-fx-background-color: black;"
+                                text="Kup whiskey" textFill="#cda252">
                             <font>
-                                <Font name="Cooper Black" size="20.0" />
+                                <Font name="Cooper Black" size="20.0"/>
                             </font>
                         </Button>
-                        <Button fx:id="IdBeczka" layoutX="716.0" layoutY="-1.0" mnemonicParsing="false" onAction="#IdBeczkaOnActionEvent" style="-fx-background-color: black;" text="Kup beczke" textFill="#cda252">
+                        <Button fx:id="IdBeczka" layoutX="716.0" layoutY="-1.0" mnemonicParsing="false"
+                                onAction="#IdBeczkaOnActionEvent" style="-fx-background-color: black;" text="Kup beczke"
+                                textFill="#cda252">
                             <font>
-                                <Font name="Cooper Black" size="20.0" />
+                                <Font name="Cooper Black" size="20.0"/>
                             </font>
                         </Button>
-                        <Button fx:id="IdProdukt" layoutX="525.0" layoutY="-3.0" mnemonicParsing="false" onAction="#IdProduktOnActionEvent" style="-fx-background-color: black;" text="Nasze produkty" textFill="#cda252">
+                        <Button fx:id="IdProdukt" layoutX="525.0" layoutY="-3.0" mnemonicParsing="false"
+                                onAction="#IdProduktOnActionEvent" style="-fx-background-color: black;"
+                                text="Nasze produkty" textFill="#cda252">
                             <font>
-                                <Font name="Cooper Black" size="20.0" />
+                                <Font name="Cooper Black" size="20.0"/>
                             </font>
                         </Button>
-                        <MenuButton layoutX="1135.0" layoutY="-19.0" mnemonicParsing="false" style="-fx-background-color: black;-fx-base: black;" text="MÓJ PROFIL" textFill="WHITE">
+                        <MenuButton layoutX="1135.0" layoutY="-19.0" mnemonicParsing="false"
+                                    style="-fx-background-color: black;-fx-base: black;" text="MÓJ PROFIL"
+                                    textFill="WHITE">
                             <items>
-                                <MenuItem mnemonicParsing="false" onAction="#IdProduktOnActionEvent" style="-fx-background-color: #7a7a7a; -fx-text-color: white;" text="Nasze produkty" />
-                                <MenuItem mnemonicParsing="false" onAction="#IdBeczkaOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Kup beczke" />
-                                <MenuItem mnemonicParsing="false" onAction="#IdWhiskyOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Kup whiskey" />
-                                <MenuItem mnemonicParsing="false" onAction="#wiadomosciOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Wiadomosci" />
-                                <MenuItem mnemonicParsing="false" onAction="#mojProfilOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Moj profil" />
-                                <MenuItem mnemonicParsing="false" onAction="#kontaktOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Kontakt" />
-                                <MenuItem mnemonicParsing="false" onAction="#politykaOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Polityka" />
-                                <MenuItem mnemonicParsing="false" onAction="#wylogujOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Wyloguj się" />
+                                <MenuItem mnemonicParsing="false" onAction="#IdProduktOnActionEvent"
+                                          style="-fx-background-color: #7a7a7a; -fx-text-color: white;"
+                                          text="Nasze produkty"/>
+                                <MenuItem mnemonicParsing="false" onAction="#IdBeczkaOnActionEvent"
+                                          style="-fx-background-color: #7a7a7a;" text="Kup beczke"/>
+                                <MenuItem mnemonicParsing="false" onAction="#IdWhiskyOnActionEvent"
+                                          style="-fx-background-color: #7a7a7a;" text="Kup whiskey"/>
+                                <MenuItem mnemonicParsing="false" onAction="#wiadomosciOnActionEvent"
+                                          style="-fx-background-color: #7a7a7a;" text="Wiadomosci"/>
+                                <MenuItem mnemonicParsing="false" onAction="#mojProfilOnActionEvent"
+                                          style="-fx-background-color: #7a7a7a;" text="Moj profil"/>
+                                <MenuItem mnemonicParsing="false" onAction="#kontaktOnActionEvent"
+                                          style="-fx-background-color: #7a7a7a;" text="Kontakt"/>
+                                <MenuItem mnemonicParsing="false" onAction="#politykaOnActionEvent"
+                                          style="-fx-background-color: #7a7a7a;" text="Polityka"/>
+                                <MenuItem mnemonicParsing="false" onAction="#wylogujOnActionEvent"
+                                          style="-fx-background-color: #7a7a7a;" text="Wyloguj się"/>
                             </items>
                             <font>
-                                <Font name="Cooper Black" size="20.0" />
+                                <Font name="Cooper Black" size="20.0"/>
                             </font>
                         </MenuButton>
-                        <Button fx:id="buttonKoszyk" layoutX="1059.0" layoutY="-20.0" mnemonicParsing="false" onAction="#koszykOnAction" prefHeight="41.0" prefWidth="63.0" style="-fx-background-color: black;">
+                        <Button fx:id="buttonKoszyk" layoutX="1059.0" layoutY="-20.0" mnemonicParsing="false"
+                                onAction="#koszykOnAction" prefHeight="41.0" prefWidth="63.0"
+                                style="-fx-background-color: black;">
                             <graphic>
                                 <ImageView fitHeight="57.0" fitWidth="65.0" layoutX="1068.0" layoutY="-100.0">
-                                    <Image url="@images/koszyk1.PNG" />
+                                    <Image url="@images/koszyk1.PNG"/>
                                 </ImageView>
                             </graphic>
                         </Button>
                     </children>
                 </Pane>
-                <Pane layoutX="31.0" layoutY="159.0" prefHeight="577.0" prefWidth="922.0" style="-fx-background-color: white;">
+                <Pane layoutX="31.0" layoutY="159.0" prefHeight="577.0" prefWidth="922.0"
+                      style="-fx-background-color: white;">
                     <children>
-                        <TableView fx:id="Tab" layoutX="14.0" layoutY="17.0" onMouseClicked="#getSelected" prefHeight="230.0" prefWidth="600.0">
-                            <columns>
-                                <TableColumn fx:id="idData" prefWidth="91.0" text="Data" />
-                                <TableColumn fx:id="idKwota" prefWidth="86.0" text="Kwota" />
-                                <TableColumn fx:id="idProdukty" prefWidth="420.0" text="Produkty" />
-                                <TableColumn fx:id="idFakt" prefWidth="75.0" text="id" visible="false" />
-                            </columns>
-                        </TableView>
-                        <Label layoutX="712.0" layoutY="14.0" text="FAKTURY">
-                            <font>
-                                <Font name="System Bold" size="47.0" />
-                            </font>
-                        </Label>
+                        <TabPane prefHeight="577.0" prefWidth="924.0" tabClosingPolicy="UNAVAILABLE">
+                            <tabs>
+                                <Tab text="FAKTURY">
+                                    <content>
+                                        <AnchorPane fx:id="pp" minHeight="0.0" minWidth="0.0" prefHeight="397.0"
+                                                    prefWidth="764.0">
+
+                                            <TableView fx:id="Tab" layoutX="14.0" layoutY="17.0"
+                                                       onMouseClicked="#getSelected" prefHeight="214.0"
+                                                       prefWidth="250.0">
+                                                <columns>
+                                                    <TableColumn fx:id="idData" prefWidth="125.0" text="Data"/>
+                                                    <TableColumn fx:id="idKwota" prefWidth="125.0" text="Kwota"/>
+                                                    <TableColumn fx:id="idProdukty" prefWidth="420.0" text="Produkty"
+                                                                 visible="false"/>
+                                                    <TableColumn fx:id="idFakt" prefWidth="75.0" text="id"
+                                                                 visible="false"/>
+                                                </columns>
+                                            </TableView>
+                                            <TextField fx:id="idDane" editable="false" layoutX="512.0" layoutY="25.0"
+                                                       prefHeight="25.0" prefWidth="219.0"/>
+                                            <TextField fx:id="idDat" editable="false" layoutX="512.0" layoutY="60.0"
+                                                       prefHeight="25.0" prefWidth="219.0"/>
+                                            <TextField fx:id="idKw" editable="false" layoutX="512.0" layoutY="95.0"
+                                                       prefHeight="25.0" prefWidth="219.0"/>
+                                            <Label layoutX="325.0" layoutY="25.0" text="NAZWISKO IMIE"
+                                                   textFill="#cda252">
+                                                <font>
+                                                    <Font name="System Bold" size="12.0"/>
+                                                </font>
+                                            </Label>
+                                            <Label layoutX="325.0" layoutY="60.0" text="DATA WYSTAWIENIA"
+                                                   textFill="#cda252">
+                                                <font>
+                                                    <Font name="System Bold" size="12.0"/>
+                                                </font>
+                                            </Label>
+                                            <Label layoutX="325.0" layoutY="95.0" text="KWOTA" textFill="#cda252">
+                                                <font>
+                                                    <Font name="System Bold" size="12.0"/>
+                                                </font>
+                                            </Label>
+                                            <Label layoutX="325.0" layoutY="130.0" text="PRODUKTY" textFill="#cda252">
+                                                <font>
+                                                    <Font name="System Bold" size="12.0"/>
+                                                </font>
+                                            </Label>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                                <Tab text="OPINIE">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <Button layoutX="428.0" layoutY="292.0" mnemonicParsing="false"
+                                                    onAction="#dodajOpnieOnAction" text="Dodaj opinie"/>
+                                            <Button layoutX="540.0" layoutY="292.0" mnemonicParsing="false"
+                                                    onAction="#usunOpnieOnAction" text="Usun opinie"/>
+                                            <Button layoutX="649.0" layoutY="292.0" mnemonicParsing="false"
+                                                    onAction="#edytujOpnieOnAction" text="Edytuj opinie"/>
+                                            <TableView fx:id="Tab1" layoutX="22.0" layoutY="35.0"
+                                                       onMouseClicked="#getSelectedOpinia" prefHeight="269.0"
+                                                       prefWidth="334.0">
+                                                <columns>
+                                                    <TableColumn fx:id="idData1" prefWidth="91.0" text="Data"/>
+                                                    <TableColumn fx:id="idPr" prefWidth="86.0" text="Produkt"/>
+                                                    <TableColumn fx:id="idTr" prefWidth="160.0" text="Opinia"/>
+                                                    <TableColumn fx:id="idOp" prefWidth="75.0" text="id"
+                                                                 visible="false"/>
+                                                </columns>
+                                            </TableView>
+                                            <ChoiceBox fx:id="idPrd" layoutX="420.0" layoutY="35.0" prefHeight="25.0"
+                                                       prefWidth="239.0"/>
+                                            <TextArea fx:id="idOpinia" layoutX="420.0" layoutY="84.0" prefHeight="182.0"
+                                                      prefWidth="303.0" promptText="TRESC OPINII"/>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                            </tabs>
+                        </TabPane>
                     </children>
                 </Pane>
             </children>

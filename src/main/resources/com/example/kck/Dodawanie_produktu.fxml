@@ -10,18 +10,13 @@
             <children>
                 <Pane layoutY="33.0" opacity="0.85" prefHeight="93.0" prefWidth="1360.0" style="-fx-background-color: black;">
                     <children>
-                        <Label layoutX="14.0" layoutY="-23.0" text="WHISKY MADNESS" textFill="WHITE">
+                        <Button layoutX="-22.0" layoutY="-42.0" onAction="#homeOnAction" style="-fx-background-color: black;" text="WHISKY MADNESS" textFill="WHITE">
                             <font>
                                 <Font name="Haettenschweiler" size="64.0" />
                             </font>
-                        </Label>
+                        </Button>
 
                         <Button fx:id="IdWiadomosci" layoutX="941.0" layoutY="-1.0" mnemonicParsing="false" onAction="#IdWiadomosciOnActionEvent" style="-fx-background-color: black;" text="Wiadomosci" textFill="#cda252">
-                            <font>
-                                <Font name="Cooper Black" size="20.0" />
-                            </font>
-                        </Button>
-                        <Button fx:id="IdFaktury" layoutX="797.0" layoutY="-1.0" mnemonicParsing="false" onAction="#IdFakturyOnActionEvent" style="-fx-background-color: black;" text="Faktury" textFill="#cda252">
                             <font>
                                 <Font name="Cooper Black" size="20.0" />
                             </font>
@@ -40,39 +35,40 @@
                     </children>
                 </Pane>
                 <Pane fx:id="g" layoutX="36.0" layoutY="118.0" prefHeight="616.0" prefWidth="695.0" style="-fx-background-color: white;">
-               <children>
-                  <TableView fx:id="Tab" layoutX="-2.0" layoutY="3.0" onMouseClicked="#getSelected" prefHeight="612.0" prefWidth="695.0">
-                    <columns>
-                      <TableColumn fx:id="idTab" prefWidth="75.0" text="id" visible="false" />
-                      <TableColumn fx:id="nazwaTab" prefWidth="88.0" text="nazwa" />
-                        <TableColumn fx:id="cenaTab" prefWidth="78.0" text="cena" />
-                        <TableColumn fx:id="opisTab" prefWidth="129.0" text="opis" />
-                        <TableColumn fx:id="obrazTab" prefWidth="319.0" text="obraz" />
-                        <TableColumn fx:id="typTab" prefWidth="85.0" text="typ" />
-                    </columns>
-                  </TableView>
-               </children></Pane>
+                    <children>
+                        <TableView fx:id="Tab" layoutX="-2.0" layoutY="3.0" onMouseClicked="#getSelected" prefHeight="612.0" prefWidth="695.0">
+                            <columns>
+                                <TableColumn fx:id="idTab" prefWidth="75.0" text="id" visible="false" />
+                                <TableColumn fx:id="nazwaTab" prefWidth="104.0" text="nazwa" />
+                                <TableColumn fx:id="cenaTab" prefWidth="69.0" text="cena" />
+                                <TableColumn fx:id="opisTab" prefWidth="129.0" style="-fx-wrap-text: true;" text="opis" />
+                                <TableColumn fx:id="obrazTab" prefWidth="312.0" text="obraz" />
+                                <TableColumn fx:id="typTab" prefWidth="85.0" text="typ" />
+                            </columns>
+                        </TableView>
+                    </children>
+                </Pane>
                 <TextField fx:id="idNazwa" layoutX="803.0" layoutY="155.0" prefHeight="36.0" prefWidth="254.0" promptText="NAZWA PRODUKTU" />
                 <TextField fx:id="idCena" layoutX="803.0" layoutY="222.0" prefHeight="36.0" prefWidth="254.0" promptText="CENA" />
                 <TextField fx:id="idPlik" layoutX="803.0" layoutY="292.0" prefHeight="36.0" prefWidth="254.0" promptText="PLIK" />
                 <ChoiceBox fx:id="idTyp" layoutX="803.0" layoutY="362.0" prefHeight="36.0" prefWidth="254.0" />
-                <TextArea fx:id="idOpis" layoutX="803.0" layoutY="432.0" prefHeight="200.0" prefWidth="320.0" promptText="OPIS" />
-                <Button fx:id="idWybierz" layoutX="1071.0" onAction="#WybierzZdjecie" layoutY="298.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="97.0" text="Wybierz plik" />
+                <TextArea fx:id="idOpis" layoutX="803.0" layoutY="432.0" prefHeight="200.0" prefWidth="320.0" promptText="OPIS" style="-fx-wrap-text: true;" />
+                <Button fx:id="idWybierz" layoutX="1071.0" layoutY="298.0" mnemonicParsing="false" onAction="#WybierzZdjecie" prefHeight="28.0" prefWidth="97.0" text="Wybierz plik" />
                 <Button layoutX="750.0" layoutY="666.0" mnemonicParsing="false" onAction="#dodajOnAction" style="-fx-background-color: black;" text="DODAJ " textFill="#cda252">
                     <font>
                         <Font name="Cooper Black" size="20.0" />
                     </font>
                 </Button>
-            <Button layoutX="900.0" layoutY="666.0" mnemonicParsing="false" onAction="#edytujOnAction" style="-fx-background-color: black;" text="EDYTUJ" textFill="#cda252">
-                <font>
-                    <Font name="Cooper Black" size="20.0" />
-                </font>
-            </Button>
-            <Button layoutX="1050.0" layoutY="666.0" mnemonicParsing="false" onAction="#usunOnAction" style="-fx-background-color: black;" text="USUN" textFill="#cda252">
-                <font>
-                    <Font name="Cooper Black" size="20.0" />
-                </font>
-            </Button>
+                <Button layoutX="900.0" layoutY="666.0" mnemonicParsing="false" onAction="#edytujOnAction" style="-fx-background-color: black;" text="EDYTUJ" textFill="#cda252">
+                    <font>
+                        <Font name="Cooper Black" size="20.0" />
+                    </font>
+                </Button>
+                <Button layoutX="1050.0" layoutY="666.0" mnemonicParsing="false" onAction="#usunOnAction" style="-fx-background-color: black;" text="USUN" textFill="#cda252">
+                    <font>
+                        <Font name="Cooper Black" size="20.0" />
+                    </font>
+                </Button>
 
             </children>
         </AnchorPane>

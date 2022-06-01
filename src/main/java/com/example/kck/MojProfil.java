@@ -106,34 +106,32 @@ public class MojProfil implements Initializable {
         }
     }
 
-    public void zmienHaslo(ActionEvent event)  throws SQLException{
+    public void zmienHaslo(ActionEvent event) throws SQLException {
         Statement st = null;
         ResultSet rs = null;
         int idZal = 0;
-        String hasl=null;
+        String hasl = null;
 
         st = connectDB.createStatement();
         String daneKl = "SELECT k.idKlienta,k.haslo FROM zalogowany z, klient k WHERE z.idKlienta=k.idKlienta";
         rs = st.executeQuery(daneKl);
         while (rs.next()) {
             idZal = rs.getInt("k.idKlienta");
-            hasl=rs.getString("k.haslo");
+            hasl = rs.getString("k.haslo");
         }
         st.close();
 
-        if(idHaslo.getText().equals(hasl)){
-            if(!idHasloNowe.getText().equals("")|| !idHasloNowe.getText().isEmpty()) {
-                if(!idHasloPow.getText().equals("") || !idHasloPow.getText().isEmpty()){
-                    String zmiana="UPDATE klient SET haslo='"+idHasloNowe.getText()+"'WHERE idKlienta='"+idZal+"'";
-                    pst=(PreparedStatement) connectDB.prepareStatement(zmiana);
+        if (idHaslo.getText().equals(hasl)) {
+            if (!idHasloNowe.getText().equals("") || !idHasloNowe.getText().isEmpty()) {
+                if (!idHasloPow.getText().equals("") || !idHasloPow.getText().isEmpty()) {
+                    String zmiana = "UPDATE klient SET haslo='" + idHasloNowe.getText() + "'WHERE idKlienta='" + idZal + "'";
+                    pst = (PreparedStatement) connectDB.prepareStatement(zmiana);
                     pst.execute();
                     wczytajDane();
                     JOptionPane.showMessageDialog(null, "Hasło zostało pomyślnie zmienione.");
-                }
-                else JOptionPane.showMessageDialog(null, "Powtórz nowe hasło.");
-            }
-            else  JOptionPane.showMessageDialog(null, "Podaj nowe hasło.");
-        }else  JOptionPane.showMessageDialog(null, "Podano błędne stare hasło");
+                } else JOptionPane.showMessageDialog(null, "Powtórz nowe hasło.");
+            } else JOptionPane.showMessageDialog(null, "Podaj nowe hasło.");
+        } else JOptionPane.showMessageDialog(null, "Podano błędne stare hasło");
 
     }
 
@@ -321,6 +319,24 @@ public class MojProfil implements Initializable {
         }
     }
 
+    public void homeOnAction(ActionEvent event) {
+        Stage stage = (Stage) IdProdukt.getScene().getWindow();
+        stage.close();
+        try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
+            Stage menuStage = new Stage();
+            menuStage.initStyle(StageStyle.DECORATED);
+            menuStage.setTitle("WHISKY MADNESS");
+            menuStage.setResizable(false);
+            menuStage.setScene(new Scene(root, 1360, 770));
+            menuStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -329,7 +345,6 @@ public class MojProfil implements Initializable {
             throwables.printStackTrace();
         }
     }
-
 
 
 }

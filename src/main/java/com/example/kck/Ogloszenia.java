@@ -5,7 +5,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
@@ -17,7 +20,7 @@ import java.util.ResourceBundle;
 
 public class Ogloszenia implements Initializable {
 
-    int index=-1;
+    int index = -1;
     Polaczenie connectNow = new Polaczenie();
     Connection connectDB = connectNow.getConnection();
     PreparedStatement pst = null;
@@ -25,9 +28,9 @@ public class Ogloszenia implements Initializable {
     @FXML
     private TableView<DaneOgloszenia> Tab;
     @FXML
-    private TableColumn<DaneOgloszenia,Integer> ido;
+    private TableColumn<DaneOgloszenia, Integer> ido;
     @FXML
-    private TableColumn<DaneOgloszenia,String> ogl;
+    private TableColumn<DaneOgloszenia, String> ogl;
     @FXML
     private TableColumn<DaneOgloszenia, Date> dat;
     @FXML
@@ -42,14 +45,14 @@ public class Ogloszenia implements Initializable {
         DaneOgloszenia daneOgloszenia;
 
         String danee = "SELECT idOgloszenia,data,tresc FROM ogloszenia order by idOgloszenia ASC";
-        st=connectDB.createStatement();
-        rs=st.executeQuery(danee);
+        st = connectDB.createStatement();
+        rs = st.executeQuery(danee);
 
-        while (rs.next()){
-            int id=rs.getInt("idOgloszenia");
+        while (rs.next()) {
+            int id = rs.getInt("idOgloszenia");
             String tresc = rs.getString("tresc");
             Date data = Date.valueOf(rs.getString("data"));
-            daneOgloszenia = new DaneOgloszenia(id,tresc,data);
+            daneOgloszenia = new DaneOgloszenia(id, tresc, data);
             WczTab.add(daneOgloszenia);
         }
         ido.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -59,17 +62,17 @@ public class Ogloszenia implements Initializable {
     }
 
     public void usunButtonOnAction(ActionEvent event) {
-        String danee="DELETE FROM ogloszenia WHERE idOgloszenia=?";
+        String danee = "DELETE FROM ogloszenia WHERE idOgloszenia=?";
         try {
-            pst=(PreparedStatement) connectDB.prepareStatement(danee);
+            pst = (PreparedStatement) connectDB.prepareStatement(danee);
             pst.setString(1, String.valueOf(ido.getCellData(this.index)));
             pst.execute();
-            JOptionPane.showMessageDialog(null,"Usunieto pomyslnie!");
+            JOptionPane.showMessageDialog(null, "Usunieto pomyslnie!");
             wczytajOgloszenia();
             idTresc.clear();
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Blad przy usuwaniu! "+e);
+            JOptionPane.showMessageDialog(null, "Blad przy usuwaniu! " + e);
         }
     }
 
@@ -79,7 +82,7 @@ public class Ogloszenia implements Initializable {
             String tr = idTresc.getText();
             Date dat = Date.valueOf(idData.getValue());
 
-            String danee = "UPDATE ogloszenia SET idOgloszenia='" + id1 + "' ,data='" + dat + "',tresc='" +tr+ "'WHERE idOgloszenia='" + id1 + "'";
+            String danee = "UPDATE ogloszenia SET idOgloszenia='" + id1 + "' ,data='" + dat + "',tresc='" + tr + "'WHERE idOgloszenia='" + id1 + "'";
             pst = (PreparedStatement) connectDB.prepareStatement(danee);
 
             if (idTresc.getText().isEmpty()) {
@@ -91,14 +94,14 @@ public class Ogloszenia implements Initializable {
                 idTresc.clear();
             }
 
-        } catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Blad przy edycji! " + e);
         }
     }
 
     public void getSelected(MouseEvent mouseEvent) {
-        index=Tab.getSelectionModel().getSelectedIndex();
-        if(index<=-1){
+        index = Tab.getSelectionModel().getSelectedIndex();
+        if (index <= -1) {
             return;
         }
         idTresc.setText(ogl.getCellData(index));
@@ -109,27 +112,28 @@ public class Ogloszenia implements Initializable {
         Statement st = null;
         ResultSet rs = null;
 
-        st=connectDB.createStatement();
-        String danee="SELECT * FROM ogloszenia order by idOgloszenia ASC";
-        rs=st.executeQuery(danee);
+        st = connectDB.createStatement();
+        String danee = "SELECT * FROM ogloszenia order by idOgloszenia ASC";
+        rs = st.executeQuery(danee);
 
         int ido = 0;
-        while(rs.next()){
-            ido=rs.getInt("idOgloszenia");
+        while (rs.next()) {
+            ido = rs.getInt("idOgloszenia");
         }
 
-        String dane="INSERT INTO ogloszenia(idOgloszenia,data,tresc)values(?,?,?)";
-        try{
-            pst=(PreparedStatement)connectDB.prepareStatement(dane);
-            pst.setString(1, String.valueOf(ido+1));
+        String dane = "INSERT INTO ogloszenia(idOgloszenia,data,tresc)values(?,?,?)";
+        try {
+            pst = (PreparedStatement) connectDB.prepareStatement(dane);
+            pst.setString(1, String.valueOf(ido + 1));
             pst.setString(2, String.valueOf(idData.getValue()));
-            pst.setString(3,idTresc.getText());
+            pst.setString(3, idTresc.getText());
             pst.execute();
-            JOptionPane.showMessageDialog(null,"Dodano pomyslnie!");
+            JOptionPane.showMessageDialog(null, "Dodano pomyslnie!");
             idTresc.clear();
             wczytajOgloszenia();
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null,"Blad dodawania! "+e);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Blad dodawania! " + e);
         }
     }
 
