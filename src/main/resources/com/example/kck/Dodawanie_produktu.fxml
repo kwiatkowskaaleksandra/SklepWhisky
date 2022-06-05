@@ -21,7 +21,7 @@
                                 <Font name="Cooper Black" size="20.0" />
                             </font>
                         </Button>
-                        <Button fx:id="IdProdukty" layoutX="609.0" layoutY="-3.0" mnemonicParsing="false" onAction="#IdProduktyOnActionEvent" style="-fx-background-color: black;" text="Produkty" textFill="#cda252">
+                        <Button fx:id="IdProdukty" layoutX="785.0" layoutY="-1.0" mnemonicParsing="false" onAction="#IdProduktyOnActionEvent" style="-fx-background-color: black;" text="Produkty" textFill="#cda252">
                             <font>
                                 <Font name="Cooper Black" size="20.0" />
                             </font>

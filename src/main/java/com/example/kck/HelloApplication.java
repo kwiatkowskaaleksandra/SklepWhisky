@@ -15,7 +15,7 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Home.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("zanim-wejdziesz.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1360, 768);
         stage.setTitle("WHISKY MADNESS");
         stage.setResizable(false);

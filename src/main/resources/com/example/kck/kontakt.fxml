@@ -1,85 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<ScrollPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity"
-            prefHeight="768.0" prefWidth="1360.0" styleClass="bodybg" stylesheets="@CSS/tlo.css"
-            xmlns="http://javafx.com/javafx/17" fx:controller="com.example.kck.HelloController">
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" styleClass="bodybg" stylesheets="@CSS/tlo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kck.HelloController">
     <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="1360.0" styleClass="bodybg"
-                    stylesheets="@CSS/tlo.css">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="1360.0" styleClass="bodybg" stylesheets="@CSS/tlo.css">
             <children>
-                <Pane layoutY="33.0" opacity="0.85" prefHeight="93.0" prefWidth="1360.0"
-                      style="-fx-background-color: black;">
+                <Pane layoutY="33.0" opacity="0.85" prefHeight="93.0" prefWidth="1360.0" style="-fx-background-color: black;">
                     <children>
-                        <Button layoutX="-22.0" layoutY="-42.0" style="-fx-background-color: black;"  onAction="#homeOnAction" text="WHISKY MADNESS" textFill="WHITE">
+                        <Button layoutX="-22.0" layoutY="-42.0" onAction="#homeOnAction" style="-fx-background-color: black;" text="WHISKY MADNESS" textFill="WHITE">
                             <font>
                                 <Font name="Haettenschweiler" size="64.0" />
                             </font>
                         </Button>
-                        <Button fx:id="IdWhisky" layoutX="862.0" layoutY="-1.0" mnemonicParsing="false"
-                                onAction="#IdWhiskyOnActionEvent" style="-fx-background-color: black;"
-                                text="Kup whiskey" textFill="#cda252">
+                        <Button fx:id="IdWhisky" layoutX="862.0" layoutY="-1.0" mnemonicParsing="false" onAction="#IdWhiskyOnActionEvent" style="-fx-background-color: black;" text="Kup whiskey" textFill="#cda252">
                             <font>
-                                <Font name="Cooper Black" size="20.0"/>
+                                <Font name="Cooper Black" size="20.0" />
                             </font>
                         </Button>
-                        <Button fx:id="IdBeczka" layoutX="716.0" layoutY="-1.0" mnemonicParsing="false"
-                                onAction="#IdBeczkaOnActionEvent" style="-fx-background-color: black;" text="Kup beczke"
-                                textFill="#cda252">
+                        <Button fx:id="IdBeczka" layoutX="716.0" layoutY="-1.0" mnemonicParsing="false" onAction="#IdBeczkaOnActionEvent" style="-fx-background-color: black;" text="Kup beczke" textFill="#cda252">
                             <font>
-                                <Font name="Cooper Black" size="20.0"/>
+                                <Font name="Cooper Black" size="20.0" />
                             </font>
                         </Button>
-                        <Button fx:id="IdProdukt" layoutX="525.0" layoutY="-3.0" mnemonicParsing="false"
-                                onAction="#IdProduktOnActionEvent" style="-fx-background-color: black;"
-                                text="Nasze produkty" textFill="#cda252">
+                        <Button fx:id="IdProdukt" layoutX="525.0" layoutY="-3.0" mnemonicParsing="false" onAction="#IdProduktOnActionEvent" style="-fx-background-color: black;" text="Nasze produkty" textFill="#cda252">
                             <font>
-                                <Font name="Cooper Black" size="20.0"/>
+                                <Font name="Cooper Black" size="20.0" />
                             </font>
                         </Button>
-                        <MenuButton layoutX="1135.0" layoutY="-19.0" mnemonicParsing="false"
-                                    style="-fx-background-color: black;-fx-base: black;" text="MÓJ PROFIL"
-                                    textFill="WHITE">
+                        <MenuButton layoutX="1135.0" layoutY="-19.0" mnemonicParsing="false" style="-fx-background-color: black;-fx-base: black;" text="MÓJ PROFIL" textFill="WHITE">
                             <items>
-                                <MenuItem mnemonicParsing="false" onAction="#IdProduktOnActionEvent"
-                                          style="-fx-background-color: #7a7a7a; -fx-text-color: white;"
-                                          text="Nasze produkty"/>
-                                <MenuItem mnemonicParsing="false" onAction="#IdBeczkaOnActionEvent"
-                                          style="-fx-background-color: #7a7a7a;" text="Kup beczke"/>
-                                <MenuItem mnemonicParsing="false" onAction="#IdWhiskyOnActionEvent"
-                                          style="-fx-background-color: #7a7a7a;" text="Kup whiskey"/>
-                                <MenuItem mnemonicParsing="false" onAction="#wiadomosciOnActionEvent"
-                                          style="-fx-background-color: #7a7a7a;" text="Wiadomosci"/>
-                                <MenuItem mnemonicParsing="false" onAction="#mojProfilOnActionEvent"
-                                          style="-fx-background-color: #7a7a7a;" text="Moj profil"/>
-                                <MenuItem mnemonicParsing="false" onAction="#kontaktOnActionEvent"
-                                          style="-fx-background-color: #7a7a7a;" text="Kontakt"/>
-                                <MenuItem mnemonicParsing="false" onAction="#politykaOnActionEvent"
-                                          style="-fx-background-color: #7a7a7a;" text="Polityka"/>
-                                <MenuItem mnemonicParsing="false" onAction="#wylogujOnActionEvent"
-                                          style="-fx-background-color: #7a7a7a;" text="Wyloguj się"/>
+                                <MenuItem mnemonicParsing="false" onAction="#IdProduktOnActionEvent" style="-fx-background-color: #7a7a7a; -fx-text-color: white;" text="Nasze produkty" />
+                                <MenuItem mnemonicParsing="false" onAction="#IdBeczkaOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Kup beczke" />
+                                <MenuItem mnemonicParsing="false" onAction="#IdWhiskyOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Kup whiskey" />
+                                <MenuItem mnemonicParsing="false" onAction="#wiadomosciOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Wiadomosci" />
+                                <MenuItem mnemonicParsing="false" onAction="#mojProfilOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Moj profil" />
+                                <MenuItem mnemonicParsing="false" onAction="#kontaktOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Kontakt" />
+                                <MenuItem mnemonicParsing="false" onAction="#politykaOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Polityka" />
+                                <MenuItem mnemonicParsing="false" onAction="#wylogujOnActionEvent" style="-fx-background-color: #7a7a7a;" text="Wyloguj się" />
                             </items>
                             <font>
-                                <Font name="Cooper Black" size="20.0"/>
+                                <Font name="Cooper Black" size="20.0" />
                             </font>
                         </MenuButton>
-                        <Button fx:id="buttonKoszyk" layoutX="1059.0" layoutY="-20.0" mnemonicParsing="false"
-                                onAction="#koszykOnAction" prefHeight="41.0" prefWidth="63.0"
-                                style="-fx-background-color: black;">
+                        <Button fx:id="buttonKoszyk" layoutX="1059.0" layoutY="-20.0" mnemonicParsing="false" onAction="#koszykOnAction" prefHeight="41.0" prefWidth="63.0" style="-fx-background-color: black;">
                             <graphic>
                                 <ImageView fitHeight="57.0" fitWidth="65.0" layoutX="1068.0" layoutY="-100.0">
-                                    <Image url="@images/koszyk1.PNG"/>
+                                    <Image url="@images/koszyk1.PNG" />
                                 </ImageView>
                             </graphic>
                         </Button>
                     </children>
                 </Pane>
+            <Label layoutX="136.0" layoutY="145.0" prefHeight="67.0" prefWidth="243.0" style="-fx-background-color: black;" text="KONTAKT" textFill="WHITE">
+                <font>
+                    <Font name="Cooper Black" size="35.0" />
+                </font>
+            </Label>
+            <Label layoutX="136.0" layoutY="212.0" prefHeight="48.0" prefWidth="252.0" style="-fx-background-color: black;" text="OBSŁUGA KLIENTA" textFill="WHITE">
+                <font>
+                    <Font name="Berlin Sans FB" size="16.0" />
+                </font>
+            </Label>
+            <Label layoutX="136.0" layoutY="252.0" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: black;" text="INFOLINIA 666 605 330" textFill="WHITE">
+                <font>
+                    <Font name="Berlin Sans FB" size="16.0" />
+                </font>
+            </Label>
+            <Label layoutX="136.0" layoutY="287.0" prefHeight="21.0" prefWidth="183.0" style="-fx-background-color: black;" text="sklep@whiskymadness.pl" textFill="WHITE">
+                <font>
+                    <Font name="Berlin Sans FB" size="16.0" />
+                </font>
+            </Label>
+            <Label layoutX="93.0" layoutY="425.0" prefHeight="40.0" prefWidth="617.0" text="ZAPRASZAMY CODZIENNIE OD 10 DO 18" textFill="WHITE">
+                <font>
+                    <Font name="Cooper Black" size="27.0" />
+                </font>
+            </Label>
+            <Label layoutX="93.0" layoutY="480.0" prefHeight="17.0" prefWidth="223.0" text="ul. Krakowska 14a  23-022 Kielce" textFill="WHITE">
+                <font>
+                    <Font name="Berlin Sans FB" size="16.0" />
+                </font>
+            </Label>
             </children>
         </AnchorPane>
     </content>

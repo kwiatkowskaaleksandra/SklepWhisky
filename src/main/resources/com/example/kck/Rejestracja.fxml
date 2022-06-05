@@ -1,80 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity"
-            prefHeight="600.0" prefWidth="550.0" style="-fx-background-color: black;"
-            xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.example.kck.Logowanie">
-    <children>
-        <Label layoutX="158.0" layoutY="28.0" style="-fx-background-color: black;" text="REJESTRACJA"
-               textFill="#cda252">
-            <font>
-                <Font name="System Bold" size="36.0"/>
-            </font>
-        </Label>
-        <TextField fx:id="idImie" layoutX="134.0" layoutY="156.0" prefHeight="25.0" prefWidth="224.0"/>
-        <TextField fx:id="idNazwisko" layoutX="134.0" layoutY="201.0" prefHeight="25.0" prefWidth="224.0"/>
-        <TextField fx:id="idLogin" layoutX="134.0" layoutY="289.0" prefHeight="25.0" prefWidth="224.0"/>
-        <PasswordField fx:id="idHaslo" layoutX="134.0" layoutY="336.0" prefHeight="25.0" prefWidth="224.0"/>
-        <TextField fx:id="idEmail" layoutX="134.0" layoutY="248.0" prefHeight="25.0" prefWidth="224.0"/>
-        <DatePicker fx:id="idData" layoutX="134.0" layoutY="431.0" prefHeight="25.0" prefWidth="224.0"/>
-        <PasswordField fx:id="idHasloPow" layoutX="134.0" layoutY="383.0" prefHeight="25.0" prefWidth="224.0"/>
 
-        <Label layoutX="21.0" layoutY="142.0" prefHeight="53.0" prefWidth="78.0" style="-fx-background-color: black;"
-               text="IMIE" textFill="#cda252">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="483.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kck.Logowanie">
+    <children>
+        <Label layoutX="126.0" layoutY="27.0" style="-fx-background-color: black;" text="REJESTRACJA" textFill="#cda252">
             <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="36.0" />
             </font>
         </Label>
-        <Label layoutX="21.0" layoutY="187.0" prefHeight="53.0" prefWidth="78.0" style="-fx-background-color: black;"
-               text="NAZWISKO" textFill="#cda252">
+        <TextField fx:id="idImie" layoutX="134.0" layoutY="156.0" prefHeight="25.0" prefWidth="264.0" />
+        <TextField fx:id="idNazwisko" layoutX="134.0" layoutY="201.0" prefHeight="25.0" prefWidth="264.0" />
+        <TextField fx:id="idLogin" layoutX="134.0" layoutY="289.0" prefHeight="25.0" prefWidth="264.0" />
+        <PasswordField fx:id="idHaslo" layoutX="134.0" layoutY="336.0" prefHeight="25.0" prefWidth="264.0" />
+        <TextField fx:id="idEmail" layoutX="134.0" layoutY="248.0" prefHeight="25.0" prefWidth="264.0" />
+        <DatePicker fx:id="idData" layoutX="134.0" layoutY="431.0" prefHeight="25.0" prefWidth="264.0" />
+        <PasswordField fx:id="idHasloPow" layoutX="134.0" layoutY="383.0" prefHeight="25.0" prefWidth="264.0" />
+
+        <Label layoutX="21.0" layoutY="142.0" prefHeight="53.0" prefWidth="78.0" style="-fx-background-color: black;" text="IMIE" textFill="#cda252">
             <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="12.0" />
             </font>
         </Label>
-        <Label layoutX="21.0" layoutY="275.0" prefHeight="53.0" prefWidth="78.0" style="-fx-background-color: black;"
-               text="LOGIN" textFill="#cda252">
+        <Label layoutX="21.0" layoutY="187.0" prefHeight="53.0" prefWidth="78.0" style="-fx-background-color: black;" text="NAZWISKO" textFill="#cda252">
             <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="12.0" />
             </font>
         </Label>
-        <Label layoutX="21.0" layoutY="322.0" prefHeight="53.0" prefWidth="78.0" style="-fx-background-color: black;"
-               text="HASLO" textFill="#cda252">
+        <Label layoutX="21.0" layoutY="275.0" prefHeight="53.0" prefWidth="78.0" style="-fx-background-color: black;" text="LOGIN" textFill="#cda252">
             <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="12.0" />
             </font>
         </Label>
-        <Label layoutX="21.0" layoutY="417.0" prefHeight="53.0" prefWidth="90.0" style="-fx-background-color: black;"
-               text="DATA URO." textFill="#cda252">
+        <Label layoutX="21.0" layoutY="322.0" prefHeight="53.0" prefWidth="78.0" style="-fx-background-color: black;" text="HASLO" textFill="#cda252">
             <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="12.0" />
             </font>
         </Label>
-        <Button fx:id="idZarejestruj" layoutX="292.0" layoutY="461.0" mnemonicParsing="false"
-                onAction="#rejestracjaOnAction" style="-fx-background-color: black;" text="ZAREJESTRUJ "
-                textFill="#cda252">
+        <Label layoutX="21.0" layoutY="417.0" prefHeight="53.0" prefWidth="90.0" style="-fx-background-color: black;" text="DATA URO." textFill="#cda252">
             <font>
-                <Font name="System Bold" size="30.0"/>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Label>
+        <Button fx:id="idZarejestruj" layoutX="218.0" layoutY="510.0" mnemonicParsing="false" onAction="#rejestracjaOnAction" style="-fx-background-color: black;" text="ZAREJESTRUJ " textFill="#cda252">
+            <font>
+                <Font name="System Bold" size="30.0" />
             </font>
         </Button>
-        <Button fx:id="idAnuluj" layoutX="37.0" layoutY="461.0" mnemonicParsing="false"
-                style="-fx-background-color: black;" text="ANULUJ" textFill="#cda252">
+        <Button fx:id="idAnuluj" layoutX="33.0" layoutY="510.0" mnemonicParsing="false" style="-fx-background-color: black;" text="ANULUJ" textFill="#cda252">
             <font>
-                <Font name="System Bold" size="30.0"/>
+                <Font name="System Bold" size="30.0" />
             </font>
         </Button>
-        <Label layoutX="21.0" layoutY="234.0" prefHeight="53.0" prefWidth="78.0" style="-fx-background-color: black;"
-               text="EMAIL" textFill="#cda252">
+        <Label layoutX="21.0" layoutY="234.0" prefHeight="53.0" prefWidth="78.0" style="-fx-background-color: black;" text="EMAIL" textFill="#cda252">
             <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="12.0" />
             </font>
         </Label>
-        <Label layoutX="21.0" layoutY="387.0" style="-fx-background-color: black;" text="POWTORZ HASLO"
-               textFill="#cda252">
+        <Label layoutX="21.0" layoutY="387.0" style="-fx-background-color: black;" text="POWTORZ HASLO" textFill="#cda252">
             <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="12.0" />
             </font>
         </Label>
 

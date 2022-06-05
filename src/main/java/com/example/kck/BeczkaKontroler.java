@@ -144,7 +144,7 @@ public class BeczkaKontroler implements Initializable {
                                     pst.execute();
                                     JOptionPane.showMessageDialog(null, "Dodano pomyslnie!");
                                 } catch (Exception e) {
-                                    JOptionPane.showMessageDialog(null, "Blad dodawania! " + e);
+                                    JOptionPane.showMessageDialog(null, "Nalezy wybrac produkt, ktory chcesz dodac do koszyka.");
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();

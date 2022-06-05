@@ -103,19 +103,19 @@
                         <Font name="Cooper Black" size="20.0" />
                     </font>
                 </Label>
-                <Button layoutX="126.0" layoutY="632.0" mnemonicParsing="false" onAction="#fakturyOnAction" style="-fx-background-color: white; -fx-background-radius: 30;" text="POKAZ FAKTURY" textFill="#cda252">
+                <Button layoutX="126.0" layoutY="632.0" mnemonicParsing="false" onAction="#fakturyOnAction" prefHeight="42.0" prefWidth="208.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="POKAŻ FAKTURY" textFill="#cda252">
                     <font>
-                        <Font size="19.0" />
+                        <Font name="Cooper Black" size="18.0" />
                     </font>
                 </Button>
-                <Button layoutX="471.0" layoutY="632.0" mnemonicParsing="false" onAction="#zapiszDaneOnAction" style="-fx-background-color: white; -fx-background-radius: 30;" text="ZAPISZ ZMIANY" textFill="#cda252">
+                <Button layoutX="471.0" layoutY="632.0" mnemonicParsing="false" onAction="#zapiszDaneOnAction" prefHeight="42.0" prefWidth="208.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="ZAPISZ ZMIANY" textFill="#cda252">
                     <font>
-                        <Font size="19.0" />
+                        <Font name="Cooper Black" size="18.0" />
                     </font>
                 </Button>
-                <Button fx:id="zmienH" layoutX="818.0" layoutY="632.0" mnemonicParsing="false" onAction="#zmienHaslo" style="-fx-background-color: white; -fx-background-radius: 30;" text="Zmien haslo" textFill="#cda252">
+                <Button fx:id="zmienH" layoutX="818.0" layoutY="632.0" mnemonicParsing="false" onAction="#zmienHaslo" prefHeight="42.0" prefWidth="208.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="ZMIEŃ HASŁO" textFill="#cda252">
                     <font>
-                        <Font size="19.0" />
+                        <Font name="Cooper Black" size="18.0" />
                     </font>
                 </Button>
 

@@ -135,11 +135,23 @@
                                     <content>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                             <Button layoutX="428.0" layoutY="292.0" mnemonicParsing="false"
-                                                    onAction="#dodajOpnieOnAction" text="Dodaj opinie"/>
+                                                    onAction="#dodajOpnieOnAction" text="Dodaj opinie" style="-fx-background-color: black; -fx-background-radius: 30;"  textFill="#cda252">
+                                                <font>
+                                                    <Font name="Cooper Black" size="12.0" />
+                                                </font>
+                                            </Button>
                                             <Button layoutX="540.0" layoutY="292.0" mnemonicParsing="false"
-                                                    onAction="#usunOpnieOnAction" text="Usun opinie"/>
+                                                    onAction="#usunOpnieOnAction" text="Usun opinie" style="-fx-background-color: black; -fx-background-radius: 30;"  textFill="#cda252">
+                                                <font>
+                                                    <Font name="Cooper Black" size="12.0" />
+                                                </font>
+                                            </Button>
                                             <Button layoutX="649.0" layoutY="292.0" mnemonicParsing="false"
-                                                    onAction="#edytujOpnieOnAction" text="Edytuj opinie"/>
+                                                    onAction="#edytujOpnieOnAction" text="Edytuj opinie" style="-fx-background-color: black; -fx-background-radius: 30;"  textFill="#cda252">
+                                                <font>
+                                                    <Font name="Cooper Black" size="12.0" />
+                                                </font>
+                                            </Button>
                                             <TableView fx:id="Tab1" layoutX="22.0" layoutY="35.0"
                                                        onMouseClicked="#getSelectedOpinia" prefHeight="269.0"
                                                        prefWidth="334.0">

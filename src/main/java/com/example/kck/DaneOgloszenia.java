@@ -7,7 +7,7 @@ public class DaneOgloszenia {
     Date data;
     int id;
 
-    DaneOgloszenia(int id, String tresc, Date data) {
+    public DaneOgloszenia(int id, String tresc, Date data) {
         this.data = data;
         this.tresc = tresc;
         this.id = id;

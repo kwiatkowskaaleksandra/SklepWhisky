@@ -58,7 +58,7 @@
                         <Font name="Cooper Black" size="14.0" />
                     </font>
                 </Label>
-                <Button layoutX="96.0" layoutY="494.0" mnemonicParsing="false" style="-fx-background-color: #cda252;" text="JACK DANIELS " textFill="WHITE" />
+                <Button layoutX="96.0" layoutY="494.0"  onAction="#IdWhiskyOnActionEvent" mnemonicParsing="false" style="-fx-background-color: #cda252;" text="JACK DANIELS " textFill="WHITE" />
             </children>
         </AnchorPane>
     </content>
