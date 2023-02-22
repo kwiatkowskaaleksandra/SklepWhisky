@@ -195,7 +195,7 @@ public class Platnosc implements Initializable {
             int ilProd = rs.getInt("k.ilosc");
 
             Statement st2 = connectDB.createStatement();
-            String daneHist = "SELECT idHistoria FROM historia";
+            String daneHist = "SELECT idHistoria FROM historia order by idHistoria ASC";
             ResultSet rs2 = st2.executeQuery(daneHist);
             int idHis = 0;
             while (rs2.next()) {
@@ -203,17 +203,19 @@ public class Platnosc implements Initializable {
             }
             st2.close();
 
-            Statement stt2 = connectDB.createStatement();
-            String daneFk = "SELECT idFaktury FROM faktury";
-            ResultSet rss2 = stt2.executeQuery(daneFk);
-            int idF = 0;
-            while (rss2.next()) {
-                idF = rss2.getInt("idFaktury");
-            }
-            st2.close();
+
 
             String daneHistoria = "INSERT INTO historia(idHistoria,idKlienta,idProduktu,ilosc,idFaktury)values (?,?,?,?,?)";
             try {
+                Statement stt2 = connectDB.createStatement();
+                String daneFk = "SELECT idFaktury FROM faktury order by idFaktury ASC";
+                ResultSet rss2 = stt2.executeQuery(daneFk);
+                int idF = 0;
+                while (rss2.next()) {
+                    idF = rss2.getInt("idFaktury");
+                }
+                System.out.println(idF);
+                st2.close();
                 pst = (PreparedStatement) connectDB.prepareStatement(daneHistoria);
                 pst.setString(1, String.valueOf(idHis + 1));
                 pst.setString(2, String.valueOf(idZal));
@@ -222,7 +224,7 @@ public class Platnosc implements Initializable {
                 pst.setString(5, String.valueOf(idF));
                 pst.execute();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Błędne dane faktury! " + e);
+                JOptionPane.showMessageDialog(null, "Błąd!" + e);
             }
         }
         st.close();
